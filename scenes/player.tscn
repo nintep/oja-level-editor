@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhkym0qp4ymbt" path="res://textures/Badger_front.png" id="1_rywou"]
 [ext_resource type="Texture2D" uid="uid://th0i4s4chd3l" path="res://textures/Badger_left.png" id="2_8qcpx"]
 [ext_resource type="PackedScene" uid="uid://8hoke7oaonf4" path="res://scenes/grid_movement.tscn" id="2_fwaxk"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="2_lfiw3"]
+[ext_resource type="Script" uid="uid://viot2men1obe" path="res://scripts/player.gd" id="2_lfiw3"]
 [ext_resource type="Texture2D" uid="uid://dylscsdb3xec3" path="res://textures/Badger_back.png" id="4_ffxdj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqp5g"]
