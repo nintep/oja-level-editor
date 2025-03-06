@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbwu0os7n5dkv"]
+
+[ext_resource type="SpriteFrames" uid="uid://bqkyrp7171alq" path="res://resources/player.tres" id="1_vstu2"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_vstu2"]
+script/source = "using Godot;
+using System;
+
+public partial class PlayerC : AnimatedSprite2D
+{
+  
+}
+"
+
+[node name="Player_C" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_vstu2")
+animation = &"idle_down"
+script = SubResource("CSharpScript_vstu2")

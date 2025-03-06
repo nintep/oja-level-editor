@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkx5e3xl42qb"]
+
+[ext_resource type="Texture2D" uid="uid://b07hk61t5uikd" path="res://icon.svg" id="1_w530d"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_5kxuf"]
+script/source = "using Godot;
+using System;
+
+public partial class CTest : Sprite2D
+{
+  private int _speed = 400;
+  private float _angularSpeed = Mathf.Pi;
+
+  public CTest()
+  {
+    GD.Print(\"Hello world!\");
+  }
+
+  public override void _Process(double delta)
+  {
+    Rotation += _angularSpeed * (float)delta;
+    Vector2 velocity = Vector2.Up.Rotated(Rotation) * _speed;
+    Position += velocity * (float)delta;
+  }
+}
+"
+
+[node name="CTest" type="Sprite2D"]
+position = Vector2(246, 165)
+texture = ExtResource("1_w530d")
+script = SubResource("CSharpScript_5kxuf")

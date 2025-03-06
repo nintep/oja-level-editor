@@ -6,6 +6,8 @@ public partial class Player : AnimatedSprite2D
 
   private GridMovement _gridMovement;
 
+  private bool _digInProgress = false;
+
   public override void _Ready()
   {
       _gridMovement = GetNodeOrNull<GridMovement>("GridMovement");
@@ -19,27 +21,47 @@ public partial class Player : AnimatedSprite2D
 
   public override void _Process(double delta)
   {
+      bool dig = Input.IsActionJustPressed("dig");
+
       Vector2 inputDir = Input.GetVector("move_left", "move_right", "move_down", "move_up");
       bool turnLeft = Input.IsActionPressed("turn_left");
       bool turnRight = Input.IsActionPressed("turn_right");
 
-      if (inputDir.Length() > 0)
+      if (dig)
       {
-        _gridMovement.Move(inputDir);
-        UpdateAnimation();
+        _digInProgress = true;
       }
-      else if (turnLeft || turnRight)
+
+      if (!_digInProgress)
       {
-        _gridMovement.Turn(turnRight);
-        UpdateAnimation();
+        if (inputDir.Length() > 0)
+        {
+          _gridMovement.Move(inputDir);
+        }
+        else if (turnLeft || turnRight)
+        {
+          _gridMovement.Turn(turnRight);
+        }
       }
+
+      UpdateAnimation();
+  }
+
+  private void OnAnimationFinished()
+  {
+    string currentAnimation = Animation;
+    if (currentAnimation.Substr(0,4) == "dig_")
+    {
+      _digInProgress = false;      
+    }
   }
 
   private void UpdateAnimation()
   {
     string facingDir = _gridMovement.GetDirectionString(_gridMovement.FacingDirection);
-    string animationState = "idle_" + facingDir;
+    string animationPrefix = _digInProgress ? "dig_" : "idle_";
 
+    string animationState = animationPrefix + facingDir;
     Play(animationState);
   }
 
