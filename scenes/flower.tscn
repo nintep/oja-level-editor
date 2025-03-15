@@ -116,7 +116,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_alive",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -134,10 +134,12 @@ animations = [{
 
 [node name="Flower" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_1ahwj")
-animation = &"idle_dead"
+animation = &"idle_alive"
 script = ExtResource("2_yoh7s")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_yoh7s")
+
+[connection signal="animation_finished" from="." to="." method="_onAnimationFinished"]
