@@ -19,6 +19,10 @@ public partial class TileMapManager : Node2D
 
   private TileLibrary _tileLibrary;
 
+  private List<Vector2I> _springTiles;
+  private const float _waterDelayTime = 1f;
+  private float _waterDelayRemaining = 0;
+
   public override void _Ready()
   {
     if (_groundTiles == null || _waterTiles == null || _obstacleTiles == null)
@@ -30,12 +34,34 @@ public partial class TileMapManager : Node2D
 
     _tileLibrary = new TileLibrary();
 
+    _springTiles = GetAllSpringLocations();
+    if (_springTiles.Count == 0)
+    {
+      GD.PrintErr("No spring tiles in level!");
+    }
+    _waterDelayRemaining = _waterDelayTime;
+
   }
 
   public override void _Process(double delta)
   {
-    
+    _waterDelayRemaining -= (float)delta;
+
+    if (_waterDelayRemaining <= 0)
+    {
+      RefreshWater();
+      foreach (int flower in _flowers.Keys)
+      {
+        RefreshFlower(flower);
+      }
+
+      _waterDelayRemaining = _waterDelayTime;
+    }
   }
+  
+  ///////////////////////////////////////////////////////
+  ///////////////// Digging //////////////////////
+  ///////////////////////////////////////////////////////
 
   public void Dig(Vector2 playerPos, Vector2 direction)
   {
@@ -150,8 +176,80 @@ public partial class TileMapManager : Node2D
 
 
   ///////////////////////////////////////////////////////
+  ///////////////// Water //////////////////////
   ///////////////////////////////////////////////////////
+  
+  private void RefreshWater()
+  {
+    if (_springTiles.Count == 0) return;
 
+    //Collect connected water tiles
+    List<Vector2I> connectedWaterTiles = new List<Vector2I>();
+    foreach (Vector2I spring in _springTiles)
+    {
+      AddConnectedWaterTiles(connectedWaterTiles, spring);
+    }
+
+    //Remove unconnected water tiles and add holes
+    foreach (var waterTile in _waterTiles.GetUsedCells())
+    {
+      if (!connectedWaterTiles.Contains(waterTile))
+      {
+        _waterTiles.EraseCell(waterTile);
+        RemoveDirt(waterTile, TileLibrary.TileType.ground_grass);
+      }
+    }
+
+    //Fill holes next to water tiles
+    foreach (Vector2I waterTile in _waterTiles.GetUsedCells())
+    {
+      List<Vector2I> holes = GetNeighborsOfType(waterTile, TileLibrary.TileType.hole);
+      foreach (Vector2I hole in holes)
+      {
+        //Remove hole tile
+        _obstacleTiles.EraseCell(hole);
+        //Add water tile
+        int tileSetSourceId = _tileLibrary.GetTileSetSourceId(TileLibrary.TileType.water);
+        Vector2I atlasCoords = _tileLibrary.GetTileAtlasCoords(TileLibrary.TileType.water);
+        _waterTiles.SetCell(hole, tileSetSourceId, atlasCoords);
+      }
+    }
+  }
+
+  //Recursively collect all connected water tiles
+  private void AddConnectedWaterTiles(List<Vector2I> currentList, Vector2I startingPoint)
+  {
+    if (currentList.Contains(startingPoint))
+    {
+      return;
+    }
+
+    currentList.Add(startingPoint);
+    List<Vector2I> neighbors = GetNeighborsOfTypes(startingPoint, [TileLibrary.TileType.water, TileLibrary.TileType.water_spring]);
+
+    for (int i = 0; i < neighbors.Count; i++)
+    {
+      AddConnectedWaterTiles(currentList, neighbors[i]);
+    }
+    
+  }
+
+  private List<Vector2I> GetAllSpringLocations()
+  {
+    List<Vector2I> cells = _waterTiles.GetUsedCells().ToList();
+
+    //Get spring tiles
+    cells = cells.Where(cell => _tileLibrary.GetTileType(
+      (string)_waterTiles.GetCellTileData(cell)
+      .GetCustomData("tileType")) == TileLibrary.TileType.water_spring)
+      .ToList();
+
+    return cells;
+  }  
+  
+  ///////////////////////////////////////////////////////
+  ///////////////// Flowers //////////////////////
+  ///////////////////////////////////////////////////////
 
   public void OnFlowerInstantiated(Vector2 pos, Flower flower)
   {
@@ -167,32 +265,106 @@ public partial class TileMapManager : Node2D
     //IsNextToWater(coords);
   }
 
-  private void RefreshFlowers()
-  {
-
-  }
-
   private void RefreshFlower(int flowerId)
   {
     bool alive = IsNextToWater(_flowerCoords[flowerId]);
     _flowers[flowerId].SetAlive(alive);
   }
 
-  private bool IsNextToWater(Vector2I coords)
+  ///////////////////////////////////////////////////////
+  ///////////////// Utils //////////////////////
+  ///////////////////////////////////////////////////////
+  
+  private bool IsNextToTileType(Vector2I coords, TileLibrary.TileType tileType)
   {
-    GD.Print("Checking if next to water: " + coords);
-    Vector2I[] neighbors = _waterTiles.GetSurroundingCells(coords).ToArray<Vector2I>();
+    TileMapLayer layer = GetLayerForTileType(tileType);
 
-    foreach (Vector2I i in neighbors)
+    foreach (Vector2I neighbor in layer.GetSurroundingCells(coords))
     {
-      if (_waterTiles.GetCellAtlasCoords(i) != new Vector2I(-1, -1))
+      TileData tileData = layer.GetCellTileData(neighbor);
+      if (tileData != null && _tileLibrary.GetTileType((string)tileData.GetCustomData("tileType")) == tileType)
       {
-        GD.Print("-- true");
         return true;
       }
     }
-    GD.Print("-- false");
     return false;
+  }
+
+  private bool IsNextToWater(Vector2I coords)
+  {
+    foreach (Vector2I neighbor in _waterTiles.GetSurroundingCells(coords))
+    {
+      TileData waterData = _waterTiles.GetCellTileData(neighbor);
+      if (waterData != null)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+  private List<Vector2I> GetNeighborsOfTypes(Vector2I coords, List<TileLibrary.TileType> tileTypes)
+  {
+    List<Vector2I> neighbors = new List<Vector2I>();
+
+    foreach (TileLibrary.TileType type in tileTypes)
+    {
+      neighbors = neighbors.Concat(GetNeighborsOfType(coords, type)).ToList();
+    }
+
+    return neighbors;
+  }
+
+  private List<Vector2I> GetNeighborsOfType(Vector2I coords, TileLibrary.TileType tileType)
+  {
+    List<Vector2I> neighbors = new List<Vector2I>();
+
+    TileMapLayer layer = GetLayerForTileType(tileType);
+
+    foreach (Vector2I neighbor in layer.GetSurroundingCells(coords))
+    {
+      TileData tileData = layer.GetCellTileData(neighbor);
+      if (tileData != null && _tileLibrary.GetTileType((string)tileData.GetCustomData("tileType")) == tileType)
+      {
+        neighbors.Add(neighbor);
+      }
+    }
+    return neighbors;
+  }
+
+  private List<Vector2I> GetAllTilesOfType(TileLibrary.TileType tileType)
+  {
+    List<Vector2I> tiles = new List<Vector2I>();
+    
+    TileMapLayer layer = GetLayerForTileType(tileType);
+
+    foreach (Vector2I cell in layer.GetUsedCells())
+    {
+      TileData tileData = layer.GetCellTileData(cell);
+      if (tileData != null && _tileLibrary.GetTileType((string)tileData.GetCustomData("tileType")) == tileType)
+      {
+        tiles.Add(cell);
+      }
+    }
+    return tiles;
+  }
+
+  private TileMapLayer GetLayerForTileType(TileLibrary.TileType tileType)
+  {
+    switch (tileType)
+    {
+      case TileLibrary.TileType.ground_grass:
+        return _groundTiles;
+      case TileLibrary.TileType.ground_stone:
+        return _groundTiles;
+      case TileLibrary.TileType.water:
+        return _waterTiles;
+      case TileLibrary.TileType.water_spring:
+        return _waterTiles;
+      default:
+        return _obstacleTiles;
+    }
   }
 
 }

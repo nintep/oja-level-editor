@@ -59,7 +59,7 @@ public class TileLibrary
       case TileType.ground_stone:
         return new Vector2I(-1, -1);
       case TileType.water:
-        return new Vector2I(-1, -1);
+        return new Vector2I(1, 1);
       case TileType.water_spring:
         return new Vector2I(-1, -1);
       case TileType.hole:
