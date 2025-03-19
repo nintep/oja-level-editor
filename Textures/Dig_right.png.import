@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyowwtekstvtx"
-path="res://.godot/imported/Flower_idle.png-73b37581bcb616eb3adb79269109b0d3.ctex"
+uid="uid://cqbgc7ops7qp4"
+path="res://.godot/imported/Dig_right.png-965307f1daed053483fc76be80833da7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Flower_idle.png"
-dest_files=["res://.godot/imported/Flower_idle.png-73b37581bcb616eb3adb79269109b0d3.ctex"]
+source_file="res://Textures/Dig_right.png"
+dest_files=["res://.godot/imported/Dig_right.png-965307f1daed053483fc76be80833da7.ctex"]
 
 [params]
 

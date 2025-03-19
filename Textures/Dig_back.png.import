@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf1ao4nagoeel"
-path="res://.godot/imported/Dig_left.png-813bba2af10f9a9c249a370ba7b1be83.ctex"
+uid="uid://d0hyo2dioms8"
+path="res://.godot/imported/Dig_back.png-fa41f4f4ca6de093b2c0f1eea98b8dcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Dig_left.png"
-dest_files=["res://.godot/imported/Dig_left.png-813bba2af10f9a9c249a370ba7b1be83.ctex"]
+source_file="res://Textures/Dig_back.png"
+dest_files=["res://.godot/imported/Dig_back.png-fa41f4f4ca6de093b2c0f1eea98b8dcc.ctex"]
 
 [params]
 

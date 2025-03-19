@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c82m83epvi844"
-path="res://.godot/imported/Dig_front.png-8592e0dbb3d62a2d14d115f0aac3addf.ctex"
+uid="uid://cgkpp8565ekab"
+path="res://.godot/imported/Flower_awake.png-68c974e2a1446851a27a747f6f828992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Dig_front.png"
-dest_files=["res://.godot/imported/Dig_front.png-8592e0dbb3d62a2d14d115f0aac3addf.ctex"]
+source_file="res://Textures/Flower_awake.png"
+dest_files=["res://.godot/imported/Flower_awake.png-68c974e2a1446851a27a747f6f828992.ctex"]
 
 [params]
 

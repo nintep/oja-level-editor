@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://th0i4s4chd3l"
-path="res://.godot/imported/Badger_left.png-03fe48a9c2a83c61e7f377cb86b58ad9.ctex"
+uid="uid://rb4mfxsawbwi"
+path="res://.godot/imported/tiles.png-9135b46920201ef194815446d9890f59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Badger_left.png"
-dest_files=["res://.godot/imported/Badger_left.png-03fe48a9c2a83c61e7f377cb86b58ad9.ctex"]
+source_file="res://Textures/tiles.png"
+dest_files=["res://.godot/imported/tiles.png-9135b46920201ef194815446d9890f59.ctex"]
 
 [params]
 

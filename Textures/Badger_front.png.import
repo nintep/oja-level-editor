@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du44q6echumbx"
-path="res://.godot/imported/tiles_2.png-1642f378ec9073c07afc7e35d829f684.ctex"
+uid="uid://bhkym0qp4ymbt"
+path="res://.godot/imported/Badger_front.png-3d800cb8e2e50a9de725a7aecf560471.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/tiles_2.png"
-dest_files=["res://.godot/imported/tiles_2.png-1642f378ec9073c07afc7e35d829f684.ctex"]
+source_file="res://Textures/Badger_front.png"
+dest_files=["res://.godot/imported/Badger_front.png-3d800cb8e2e50a9de725a7aecf560471.ctex"]
 
 [params]
 

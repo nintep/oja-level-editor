@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mbrl2ot7s6td"
-path="res://.godot/imported/obstacles.png-e76d199de7269df55691f4bf44259578.ctex"
+uid="uid://b4tpp5t2862ng"
+path="res://.godot/imported/Flower_dead.png-92195e408e45e3d33c3cfa8ed3d269e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/obstacles.png"
-dest_files=["res://.godot/imported/obstacles.png-e76d199de7269df55691f4bf44259578.ctex"]
+source_file="res://Textures/Flower_dead.png"
+dest_files=["res://.godot/imported/Flower_dead.png-92195e408e45e3d33c3cfa8ed3d269e6.ctex"]
 
 [params]
 

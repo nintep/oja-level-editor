@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4tpp5t2862ng"
-path="res://.godot/imported/Flower_dead.png-fc6a53c99f92d4cabd7a65fc23ac9476.ctex"
+uid="uid://th0i4s4chd3l"
+path="res://.godot/imported/Badger_left.png-792851aabb876253fd696be82b2b7a9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Flower_dead.png"
-dest_files=["res://.godot/imported/Flower_dead.png-fc6a53c99f92d4cabd7a65fc23ac9476.ctex"]
+source_file="res://Textures/Badger_left.png"
+dest_files=["res://.godot/imported/Badger_left.png-792851aabb876253fd696be82b2b7a9c.ctex"]
 
 [params]
 

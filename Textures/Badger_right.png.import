@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgkpp8565ekab"
-path="res://.godot/imported/Flower_awake.png-324b606aef34cb7db71f3d4c205ff3e9.ctex"
+uid="uid://c5tbp8vjf0iew"
+path="res://.godot/imported/Badger_right.png-8bb2c94e64d7f9af7e222b1cd4c93edc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Flower_awake.png"
-dest_files=["res://.godot/imported/Flower_awake.png-324b606aef34cb7db71f3d4c205ff3e9.ctex"]
+source_file="res://Textures/Badger_right.png"
+dest_files=["res://.godot/imported/Badger_right.png-8bb2c94e64d7f9af7e222b1cd4c93edc.ctex"]
 
 [params]
 

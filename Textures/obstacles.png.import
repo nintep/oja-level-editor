@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhkym0qp4ymbt"
-path="res://.godot/imported/Badger_front.png-f3f399741d194964d64f8285420a9eea.ctex"
+uid="uid://mbrl2ot7s6td"
+path="res://.godot/imported/obstacles.png-33cd475f7e4fdc6c1501cfc4c4cc6746.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Badger_front.png"
-dest_files=["res://.godot/imported/Badger_front.png-f3f399741d194964d64f8285420a9eea.ctex"]
+source_file="res://Textures/obstacles.png"
+dest_files=["res://.godot/imported/obstacles.png-33cd475f7e4fdc6c1501cfc4c4cc6746.ctex"]
 
 [params]
 

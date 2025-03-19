@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0hyo2dioms8"
-path="res://.godot/imported/Dig_back.png-29febdffe460d9f7031932f98817815a.ctex"
+uid="uid://djsdpkn6o81ya"
+path="res://.godot/imported/ground.png-546042182a1ebc03c547e8cf81782487.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Dig_back.png"
-dest_files=["res://.godot/imported/Dig_back.png-29febdffe460d9f7031932f98817815a.ctex"]
+source_file="res://Textures/ground.png"
+dest_files=["res://.godot/imported/ground.png-546042182a1ebc03c547e8cf81782487.ctex"]
 
 [params]
 
