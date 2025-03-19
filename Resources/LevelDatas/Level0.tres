@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c8vbkdy6vydhb"]
+
+[ext_resource type="Script" uid="uid://m2jlg5mbvw3b" path="res://Scripts/Data/LevelData.cs" id="1_ntiqf"]
+
+[resource]
+resource_name = "LevelData"
+script = ExtResource("1_ntiqf")
+_width = 10
+_height = 10
+_name = "Level 0"
+SaveName = "level_1"

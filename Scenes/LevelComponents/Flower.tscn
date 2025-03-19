@@ -1,56 +1,56 @@
 [gd_scene load_steps=19 format=3 uid="uid://qhyka33q45a5"]
 
-[ext_resource type="Texture2D" uid="uid://dyowwtekstvtx" path="res://textures/Flower_idle.png" id="1_8x8dx"]
-[ext_resource type="Texture2D" uid="uid://cgkpp8565ekab" path="res://textures/Flower_awake.png" id="1_rqhtc"]
-[ext_resource type="Script" uid="uid://bxbxbkxfxnpec" path="res://scripts/Flower.cs" id="2_yoh7s"]
-[ext_resource type="Texture2D" uid="uid://b4tpp5t2862ng" path="res://textures/Flower_dead.png" id="3_ym8cu"]
+[ext_resource type="Texture2D" uid="uid://cgkpp8565ekab" path="res://Textures/Flower_awake.png" id="1_5v5sj"]
+[ext_resource type="Texture2D" uid="uid://dyowwtekstvtx" path="res://Textures/Flower_idle.png" id="2_4uggy"]
+[ext_resource type="Texture2D" uid="uid://b4tpp5t2862ng" path="res://Textures/Flower_dead.png" id="3_xvsob"]
+[ext_resource type="Script" uid="uid://bxbxbkxfxnpec" path="res://Scripts/Flower.cs" id="4_6pos0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ahwj"]
-atlas = ExtResource("1_rqhtc")
+atlas = ExtResource("1_5v5sj")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bv3ss"]
-atlas = ExtResource("1_rqhtc")
+atlas = ExtResource("1_5v5sj")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vlpni"]
-atlas = ExtResource("1_rqhtc")
+atlas = ExtResource("1_5v5sj")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_17csd"]
-atlas = ExtResource("1_rqhtc")
+atlas = ExtResource("1_5v5sj")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tucwa"]
-atlas = ExtResource("1_rqhtc")
+atlas = ExtResource("1_5v5sj")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jm4k8"]
-atlas = ExtResource("1_rqhtc")
+atlas = ExtResource("1_5v5sj")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yoh7s"]
-atlas = ExtResource("1_8x8dx")
+atlas = ExtResource("2_4uggy")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_agc10"]
-atlas = ExtResource("1_8x8dx")
+atlas = ExtResource("2_4uggy")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqhtc"]
-atlas = ExtResource("1_8x8dx")
+atlas = ExtResource("2_4uggy")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ym8cu"]
-atlas = ExtResource("1_8x8dx")
+atlas = ExtResource("2_4uggy")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34oqi"]
-atlas = ExtResource("3_ym8cu")
+atlas = ExtResource("3_xvsob")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6s0i7"]
-atlas = ExtResource("3_ym8cu")
+atlas = ExtResource("3_xvsob")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ahwj"]
@@ -135,7 +135,7 @@ animations = [{
 [node name="Flower" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_1ahwj")
 animation = &"idle_alive"
-script = ExtResource("2_yoh7s")
+script = ExtResource("4_6pos0")
 
 [node name="Area2D" type="Area2D" parent="."]
 

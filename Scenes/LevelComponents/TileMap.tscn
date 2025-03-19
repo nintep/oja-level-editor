@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=4 uid="uid://bonohycvvra5w"]
 
-[ext_resource type="Script" uid="uid://bic0cr6u1mmmm" path="res://scripts/TileMapManager.cs" id="1_f6fy2"]
-[ext_resource type="Texture2D" uid="uid://rb4mfxsawbwi" path="res://textures/tiles.png" id="2_r8xb4"]
-[ext_resource type="PackedScene" uid="uid://qhyka33q45a5" path="res://scenes/flower.tscn" id="4_i8yab"]
-[ext_resource type="Texture2D" uid="uid://djsdpkn6o81ya" path="res://textures/ground.png" id="4_v3dip"]
-[ext_resource type="Texture2D" uid="uid://mbrl2ot7s6td" path="res://textures/obstacles.png" id="5_ld261"]
+[ext_resource type="Script" uid="uid://bic0cr6u1mmmm" path="res://Scripts/TileMapManager.cs" id="1_f6fy2"]
+[ext_resource type="Texture2D" uid="uid://rb4mfxsawbwi" path="res://Textures/tiles.png" id="2_r8xb4"]
+[ext_resource type="PackedScene" uid="uid://qhyka33q45a5" path="res://Scenes/LevelComponents/Flower.tscn" id="4_i8yab"]
+[ext_resource type="Texture2D" uid="uid://djsdpkn6o81ya" path="res://Textures/ground.png" id="4_v3dip"]
+[ext_resource type="Texture2D" uid="uid://mbrl2ot7s6td" path="res://Textures/obstacles.png" id="5_ld261"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_v3dip"]
 resource_name = "flower"
@@ -72,6 +72,3 @@ tile_set = SubResource("TileSet_4omwt")
 [node name="TileMapObject" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAALAAIABwACAAEAAAAGAAEABwACAAEAAAAEAAgABwACAAEAAAAKAAYABwACAAEAAAAEAAEABwACAAEAAAADAAEABwACAAEAAAACAAEABwACAAEAAAAFAAEABwACAAEAAAABAAEABwACAAEAAAALAAYAAgAAAAAAAQAFAAMAAgAAAAAAAQA=")
 tile_set = SubResource("TileSet_4omwt")
-
-[connection signal="animation_finished" from="TileMapObject/Flower" to="TileMapObject/Flower" method="_onAnimationFinished"]
-[connection signal="animation_finished" from="TileMapObject/@AnimatedSprite2D@22356" to="TileMapObject/@AnimatedSprite2D@22356" method="_onAnimationFinished"]

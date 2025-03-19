@@ -1,13 +1,13 @@
 [gd_resource type="SpriteFrames" load_steps=81 format=3 uid="uid://bqkyrp7171alq"]
 
-[ext_resource type="Texture2D" uid="uid://bhkym0qp4ymbt" path="res://textures/Badger_front.png" id="1_gk4t3"]
-[ext_resource type="Texture2D" uid="uid://c82m83epvi844" path="res://textures/Dig_front.png" id="1_rq17w"]
-[ext_resource type="Texture2D" uid="uid://th0i4s4chd3l" path="res://textures/Badger_left.png" id="2_4boxr"]
-[ext_resource type="Texture2D" uid="uid://bf1ao4nagoeel" path="res://textures/Dig_left.png" id="2_xutmu"]
-[ext_resource type="Texture2D" uid="uid://c5tbp8vjf0iew" path="res://textures/Badger_right.png" id="3_2nhab"]
-[ext_resource type="Texture2D" uid="uid://cqbgc7ops7qp4" path="res://textures/Dig_right.png" id="3_wfntr"]
-[ext_resource type="Texture2D" uid="uid://dylscsdb3xec3" path="res://textures/Badger_back.png" id="4_ea776"]
-[ext_resource type="Texture2D" uid="uid://d0hyo2dioms8" path="res://textures/Dig_back.png" id="4_urkvr"]
+[ext_resource type="Texture2D" uid="uid://bhkym0qp4ymbt" path="res://Textures/Badger_front.png" id="1_gk4t3"]
+[ext_resource type="Texture2D" uid="uid://c82m83epvi844" path="res://Textures/Dig_front.png" id="1_rq17w"]
+[ext_resource type="Texture2D" uid="uid://th0i4s4chd3l" path="res://Textures/Badger_left.png" id="2_4boxr"]
+[ext_resource type="Texture2D" uid="uid://bf1ao4nagoeel" path="res://Textures/Dig_left.png" id="2_xutmu"]
+[ext_resource type="Texture2D" uid="uid://c5tbp8vjf0iew" path="res://Textures/Badger_right.png" id="3_2nhab"]
+[ext_resource type="Texture2D" uid="uid://cqbgc7ops7qp4" path="res://Textures/Dig_right.png" id="3_wfntr"]
+[ext_resource type="Texture2D" uid="uid://dylscsdb3xec3" path="res://Textures/Badger_back.png" id="4_ea776"]
+[ext_resource type="Texture2D" uid="uid://d0hyo2dioms8" path="res://Textures/Dig_back.png" id="4_urkvr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajkpw"]
 atlas = ExtResource("1_rq17w")

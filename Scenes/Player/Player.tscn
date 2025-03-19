@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://db5vqduygagox"]
 
-[ext_resource type="SpriteFrames" uid="uid://bqkyrp7171alq" path="res://resources/player.tres" id="1_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://8hoke7oaonf4" path="res://scenes/grid_movement.tscn" id="2_fwaxk"]
-[ext_resource type="Script" uid="uid://d301xfvpk2ln2" path="res://scripts/Player.cs" id="2_qhqgy"]
+[ext_resource type="SpriteFrames" uid="uid://bqkyrp7171alq" path="res://Resources/Player.tres" id="1_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://8hoke7oaonf4" path="res://Scenes/Player/GridMovement.tscn" id="2_fwaxk"]
+[ext_resource type="Script" uid="uid://d301xfvpk2ln2" path="res://Scripts/Player.cs" id="2_qhqgy"]
 
 [node name="Player" type="AnimatedSprite2D"]
 z_index = 10
