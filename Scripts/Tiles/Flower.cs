@@ -20,7 +20,7 @@ public partial class Flower : AnimatedSprite2D
     Node parentNode = FindParent("TileMapManager");
     if (parentNode == null || parentNode.GetType() != typeof(TileMapManager))
     {
-      GD.PrintErr("Tilemap not found");
+      GD.PrintErr("Flower: Tilemap not found");
       return;
     }
 

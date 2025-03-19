@@ -1,12 +1,20 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
+[GlobalClass]
+[GodotClassName("LevelData")]
 public partial class LevelData : Resource
 {
-  [Export] private int _width = 10;
-  [Export] private int _height = 10;
-  [Export] string _name = "Level";
-  [Export] public string SaveName {get; private set;} = "level";
+  [Export] public string Name = "Level";
+  [Export] public string SaveName = "level";
+  [Export] public int NumTiles = 0;
 
-  
+  [Export]
+  public TilePlacementData[] Tiles { get; set; }
+
+  public LevelData()
+  {
+    Tiles = System.Array.Empty<TilePlacementData>();
+  }
 }
