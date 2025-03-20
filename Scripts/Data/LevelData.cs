@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public partial class LevelData : Resource
 {
   [Export] public string Name = "Level";
-  [Export] public string SaveName = "level";
   [Export] public int NumTiles = 0;
 
   [Export]

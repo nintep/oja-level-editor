@@ -1,13 +1,115 @@
-[gd_scene load_steps=3 format=4 uid="uid://6axp3f2mqn7x"]
+[gd_scene load_steps=8 format=4 uid="uid://6axp3f2mqn7x"]
 
-[ext_resource type="Script" uid="uid://b1yd212fxrbgs" path="res://Scripts/LevelControl/LevelEditor.cs" id="1_2ln5n"]
+[ext_resource type="Script" uid="uid://b1yd212fxrbgs" path="res://Scripts/LevelEditor/LevelEditor.cs" id="1_2ln5n"]
+[ext_resource type="Theme" uid="uid://8k885cbwumpr" path="res://Resources/Themes/LevelEditor.tres" id="2_2ln5n"]
+[ext_resource type="Script" uid="uid://tsdxxsab83sy" path="res://Scripts/LevelEditor/UI/LevelEditorTopBanner.cs" id="3_8ny2s"]
 [ext_resource type="PackedScene" uid="uid://byympyx3mdwj5" path="res://Scenes/LevelComponents/LevelContainer.tscn" id="4_8ny2s"]
+[ext_resource type="PackedScene" uid="uid://bdis8w0r35km5" path="res://Scenes/Editor/UI/LoadLevelDialog.tscn" id="5_x1phb"]
+[ext_resource type="PackedScene" uid="uid://dxsqgbm1rfrhx" path="res://Scenes/Editor/UI/SaveLevelDialog.tscn" id="5_ynp2e"]
+[ext_resource type="PackedScene" uid="uid://dm7o1s5m65ikf" path="res://Scenes/Editor/UI/TimedMessage.tscn" id="7_ln7jt"]
 
-[node name="LevelEditor" type="Node" node_paths=PackedStringArray("_levelContainer")]
+[node name="LevelEditor" type="Node" node_paths=PackedStringArray("_levelContainer", "_topBanner", "_timedMessage")]
 script = ExtResource("1_2ln5n")
 _levelContainer = NodePath("LevelContainer")
+_topBanner = NodePath("TopBanner")
+_timedMessage = NodePath("TimedMessage")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.125911, 0.125911, 0.125911, 1)
+
+[node name="TopBanner" type="Control" parent="." node_paths=PackedStringArray("_LevelNameField", "_loadLevelDialog", "_saveLevelDialog")]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 25.0
+grow_horizontal = 2
+theme = ExtResource("2_2ln5n")
+script = ExtResource("3_8ny2s")
+_LevelNameField = NodePath("HBoxContainerLeft/HBoxContainer/LineEdit")
+_loadLevelDialog = NodePath("LoadLevelDialog")
+_saveLevelDialog = NodePath("SaveLevelDialog")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="TopBanner"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.183743, 0.189809, 0.177667, 1)
+
+[node name="HBoxContainerLeft" type="HBoxContainer" parent="TopBanner"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 152.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBanner/HBoxContainerLeft"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="LabelLevelName" type="Label" parent="TopBanner/HBoxContainerLeft/HBoxContainer"]
+layout_mode = 2
+text = "Level name:"
+
+[node name="LineEdit" type="LineEdit" parent="TopBanner/HBoxContainerLeft/HBoxContainer"]
+layout_mode = 2
+placeholder_text = "Level name"
+max_length = 30
+expand_to_text_length = true
+context_menu_enabled = false
+emoji_menu_enabled = false
+select_all_on_focus = true
+caret_blink = true
+
+[node name="HBoxContainerRight" type="HBoxContainer" parent="TopBanner"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -138.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="ButtonSaveAs" type="Button" parent="TopBanner/HBoxContainerRight"]
+layout_mode = 2
+text = "Save as"
+
+[node name="ButtonSave" type="Button" parent="TopBanner/HBoxContainerRight"]
+layout_mode = 2
+text = "Save"
+
+[node name="ButtonLoad" type="Button" parent="TopBanner/HBoxContainerRight"]
+layout_mode = 2
+text = "Load"
+
+[node name="LoadLevelDialog" parent="TopBanner" instance=ExtResource("5_x1phb")]
+title = "Open a File"
+visible = false
+
+[node name="SaveLevelDialog" parent="TopBanner" instance=ExtResource("5_ynp2e")]
+visible = false
 
 [node name="LevelContainer" parent="." instance=ExtResource("4_8ny2s")]
+
+[node name="LevelTileMap" parent="LevelContainer" index="0"]
+position = Vector2(70, 40)
+scale = Vector2(0.85, 0.85)
 
 [node name="TileMapGround" parent="LevelContainer/LevelTileMap" index="0"]
 tile_map_data = PackedByteArray("AAAAAAAABAABAAAAAAABAAEABAABAAAAAAADAAIABAABAAAAAAAEAAIABAABAAAAAAAFAAMABAAAAAAAAAAHAAQABAAAAAAAAAAKAAYABAAAAAAAAAAMAAEABAABAAAAAAALAAEABAABAAAAAAALAAIABAABAAAAAAAMAAIABAABAAAAAAAMAAMABAABAAAAAAANAAMABAABAAAAAAANAAQABAABAAAAAAANAAYABAABAAAAAAAMAAYABAABAAAAAAALAAYABAAAAAAAAAAJAAYABAAAAAAAAAAIAAYABAAAAAAAAAAHAAYABAAAAAAAAAAGAAYABAAAAAAAAAAFAAYABAAAAAAAAAAEAAYABAAAAAAAAAADAAYABAAAAAAAAAACAAYABAABAAAAAAABAAYABAABAAAAAAAAAAYABAABAAAAAAAAAAcABAABAAAAAAAAAAgABAABAAAAAAAAAAkABAABAAAAAAAFAAEABAABAAAAAAAFAAIABAABAAAAAAAFAAQABAAAAAAAAAAFAAUABAAAAAAAAAAGAAEABAABAAAAAAAHAAEABAABAAAAAAAHAAIABAAAAAAAAAAHAAMABAAAAAAAAAAIAAEABAABAAAAAAAIAAIABAAAAAAAAAAIAAMABAAAAAAAAAAIAAQABAAAAAAAAAAJAAEABAABAAAAAAAJAAIABAABAAAAAAAJAAMABAABAAAAAAAJAAQABAAAAAAAAAAKAAEABAABAAAAAAAKAAIABAABAAAAAAAKAAMABAABAAAAAAAKAAQABAAAAAAAAAALAAMABAABAAAAAAALAAQABAABAAAAAAAMAAQABAABAAAAAAANAAEABAABAAAAAAANAAIABAABAAAAAAAOAAEABAABAAAAAAAOAAIABAABAAAAAAAOAAMABAABAAAAAAAOAAQABAABAAAAAAAOAAYABAABAAAAAAAAAAEABAABAAAAAAAAAAIABAABAAAAAAAAAAMABAABAAAAAAAAAAQABAABAAAAAAAAAAUABAABAAAAAAABAAAABAABAAAAAAABAAIABAABAAAAAAABAAMABAABAAAAAAABAAQABAABAAAAAAABAAUABAABAAAAAAABAAcABAABAAAAAAABAAgABAABAAAAAAABAAkABAABAAAAAAACAAMABAABAAAAAAACAAQABAABAAAAAAACAAUABAABAAAAAAACAAcABAABAAAAAAACAAgABAABAAAAAAACAAkABAABAAAAAAADAAAABAABAAAAAAADAAEABAABAAAAAAADAAMABAABAAAAAAADAAQABAABAAAAAAADAAUABAAAAAAAAAADAAcABAABAAAAAAADAAgABAABAAAAAAADAAkABAABAAAAAAAEAAAABAABAAAAAAAEAAEABAABAAAAAAAEAAMABAABAAAAAAAEAAQABAAAAAAAAAAEAAUABAAAAAAAAAAEAAcABAAAAAAAAAAEAAgABAABAAAAAAAEAAkABAABAAAAAAAFAAAABAABAAAAAAAFAAcABAAAAAAAAAAFAAgABAABAAAAAAAFAAkABAABAAAAAAAGAAAABAABAAAAAAAGAAcABAAAAAAAAAAGAAgABAABAAAAAAAGAAkABAABAAAAAAAHAAAABAABAAAAAAAHAAcABAAAAAAAAAAHAAgABAABAAAAAAAHAAkABAABAAAAAAAIAAAABAABAAAAAAAIAAcABAAAAAAAAAAIAAgABAABAAAAAAAIAAkABAABAAAAAAAJAAAABAABAAAAAAAJAAcABAAAAAAAAAAJAAgABAABAAAAAAAJAAkABAABAAAAAAAKAAAABAABAAAAAAAKAAcABAAAAAAAAAAKAAgABAABAAAAAAAKAAkABAABAAAAAAALAAAABAABAAAAAAALAAcABAAAAAAAAAALAAgABAAAAAAAAAAMAAAABAABAAAAAAAMAAcABAABAAAAAAAMAAgABAAAAAAAAAANAAAABAABAAAAAAANAAcABAABAAAAAAANAAgABAABAAAAAAAOAAAABAABAAAAAAAOAAcABAABAAAAAAAOAAgABAABAAAAAAAOAAkABAABAAAAAAAPAAAABAABAAAAAAAPAAEABAABAAAAAAAPAAIABAABAAAAAAAPAAMABAABAAAAAAAPAAQABAABAAAAAAAPAAUABAABAAAAAAAPAAYABAABAAAAAAAPAAcABAABAAAAAAAPAAgABAABAAAAAAAPAAkABAABAAAAAAALAAkABAABAAAAAAAMAAkABAABAAAAAAANAAkABAABAAAAAAACAAIABAABAAAAAAACAAEABAABAAAAAAACAAAABAABAAAAAAAGAAUABAAAAAAAAAAGAAQABAAAAAAAAAAGAAMABAAAAAAAAAAGAAIABAABAAAAAAAHAAUABAAAAAAAAAAIAAUABAAAAAAAAAAJAAUABAAAAAAAAAAKAAUABAAAAAAAAAALAAUABAAAAAAAAAAMAAUABAAAAAAAAAANAAUABAABAAAAAAAOAAUABAABAAAAAAA=")
@@ -17,6 +119,20 @@ tile_map_data = PackedByteArray("AAACAAMAAwABAAEAAAACAAQAAwABAAEAAAACAAUAAwABAAE
 
 [node name="TileMapObject" parent="LevelContainer/LevelTileMap" index="2"]
 tile_map_data = PackedByteArray("AAALAAIABwACAAEAAAAGAAEABwACAAEAAAAEAAgABwACAAEAAAAKAAYABwACAAEAAAAEAAEABwACAAEAAAADAAEABwACAAEAAAACAAEABwACAAEAAAAFAAEABwACAAEAAAABAAEABwACAAEAAAAMAAgABwACAAEAAAABAAYABwACAAEAAAACAAYABwACAAEAAAADAAYABwACAAEAAAAEAAYABwACAAEAAAALAAgABwAAAAEAAAAKAAgABwAAAAEAAAAJAAgABwAAAAEAAAAIAAgABwAAAAEAAAAHAAgABwAAAAEAAAAFAAcABwACAAEAAAAEAAcABwACAAEAAAAFAAYABwACAAEAAAAGAAYABwACAAEAAAAGAAUABwACAAEAAAAFAAUABwACAAEAAAAFAAQABwACAAEAAAAGAAQABwACAAEAAAAHAAQABwACAAEAAAAHAAUABwACAAEAAAAHAAYABwACAAEAAAAGAAMABwACAAEAAAAGAAIABwACAAEAAAAFAAIABwACAAEAAAAEAAIABwACAAEAAAAEAAMABwACAAEAAAADAAMABwACAAEAAAAEAAQABwACAAEAAAAFAAMABwACAAEAAAADAAIABwACAAEAAAACAAIABwACAAEAAAABAAIABwACAAEAAAAAAAIABwACAAEAAAAGAAAABwACAAEAAAAHAAAABwACAAEAAAAHAAEABwACAAEAAAANAAYABwACAAEAAAAOAAYABwACAAEAAAAOAAcABwACAAEAAAAOAAgABwACAAEAAAANAAgABwACAAEAAAANAAcABwACAAEAAAAPAAcABwACAAEAAAAPAAgABwACAAEAAAAOAAkABwACAAEAAAANAAkABwACAAEAAAAMAAkABwACAAEAAAALAAkABwACAAEAAAAPAAkABwACAAEAAAALAAEABwAAAAEAAAAKAAAABwAAAAEAAAALAAAABwAAAAEAAAAMAAAABwAAAAEAAAANAAAABwAAAAEAAAANAAEABwAAAAEAAAAOAAEABwAAAAEAAAAMAAEABwAAAAEAAAAOAAAABwAAAAEAAAAPAAAABwAAAAEAAAAPAAEABwAAAAEAAAA=")
+
+[node name="TimedMessage" parent="." instance=ExtResource("7_ln7jt")]
+anchors_preset = -1
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_vertical = 1
+
+[connection signal="pressed" from="TopBanner/HBoxContainerRight/ButtonSaveAs" to="TopBanner" method="OnSaveAsButtonPressed"]
+[connection signal="pressed" from="TopBanner/HBoxContainerRight/ButtonSave" to="TopBanner" method="OnSaveButtonPressed"]
+[connection signal="pressed" from="TopBanner/HBoxContainerRight/ButtonLoad" to="TopBanner" method="OnLoadButtonPressed"]
+[connection signal="file_selected" from="TopBanner/LoadLevelDialog" to="TopBanner" method="OnLoadLevelDialogFileSelected"]
+[connection signal="file_selected" from="TopBanner/SaveLevelDialog" to="TopBanner" method="OnSaveLevelDialogFileSelected"]
 
 [editable path="LevelContainer"]
 [editable path="LevelContainer/LevelTileMap"]

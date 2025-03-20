@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm7o1s5m65ikf"]
+
+[ext_resource type="Theme" uid="uid://8k885cbwumpr" path="res://Resources/Themes/LevelEditor.tres" id="1_g5wd5"]
+[ext_resource type="Script" uid="uid://ci0rusn2ey3ef" path="res://Scripts/LevelEditor/UI/TimedMessage.cs" id="2_q533s"]
+
+[node name="TimedMessage" type="MarginContainer" node_paths=PackedStringArray("_timer", "_label")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -10.0
+offset_right = 80.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(80, 10)
+theme = ExtResource("1_g5wd5")
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+script = ExtResource("2_q533s")
+_timer = NodePath("Timer")
+_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Message..."
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="TimerFinished"]

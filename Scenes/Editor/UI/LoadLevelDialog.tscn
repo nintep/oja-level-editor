@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bdis8w0r35km5"]
+
+[node name="LoadLevelDialog" type="FileDialog"]
+title = "Open a Level"
+initial_position = 1
+visible = true
+ok_button_text = "Open"
+file_mode = 0
+root_subfolder = "Resources/LevelDatas/"
+filters = PackedStringArray("*.tres")

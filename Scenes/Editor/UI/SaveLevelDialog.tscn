@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dxsqgbm1rfrhx"]
+
+[node name="SaveLevelDialog" type="FileDialog"]
+title = "Save a Level"
+initial_position = 1
+visible = true
+root_subfolder = "Resources/LevelDatas/"
+filters = PackedStringArray("*.tres")

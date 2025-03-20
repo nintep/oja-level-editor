@@ -1,40 +1,42 @@
 using Godot;
 using System;
 
-public class ResourceSaveLoad
+public static class LevelSaveLoad
 {
-  private string _savePathRoot = "res://Resources/";
-  private string _levelFolder = "LevelDatas/";
-  private string _levelSuffix = ".tres";
+  private static string _savePathRoot = "res://Resources/";
+  private static string _levelFolder = "LevelDatas/";
+  private static string _levelSuffix = ".tres";
 
-  public ResourceSaveLoad()
+  public static bool SaveLevel(LevelData levelData, string savePath)
   {
-  }
+    if (savePath.Trim() == "" || savePath == null)
+    {
+      GD.PrintErr("SaveLoad: attempting to save empty filename");
+      return false;
+    }
 
-  public void SaveLevel(LevelData levelData)
-  {
-    string savePath = _savePathRoot + _levelFolder + levelData.SaveName + _levelSuffix;
+    //TODO: validate save path
+
     string globalPath = ProjectSettings.GlobalizePath(savePath);
-
     GD.Print("SaveLoad: attempting to save to " + globalPath);
 
     Error error = ResourceSaver.Save(levelData, savePath);
     if (error != Error.Ok)
     {
       GD.PrintErr("Failed to save level: ", error);
+      return false;
     }
     else
     {
       GD.Print("Level saved to " + globalPath);
+      return true;
     }
   }
 
-  public LevelData LoadLevel(string saveName)
+  public static LevelData LoadLevel(string loadPath)
   {
-    string loadPath = _savePathRoot + _levelFolder + saveName + _levelSuffix;
     string globalPath = ProjectSettings.GlobalizePath(loadPath);
-
-    GD.Print("SaveLoad: attempting to load from to " + globalPath);
+    GD.Print("SaveLoad: attempting to load from " + globalPath);
 
     if (ResourceLoader.Exists(loadPath, "LevelData"))
     {
