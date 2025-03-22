@@ -5,13 +5,30 @@ using System.Collections.Generic;
 public partial class LevelTilemap : Node
 {
   [Export] 
+  private TileMapLayer _backgroundTiles;
+  [Export] 
   private TileMapLayer _groundTiles;
   [Export] 
   private TileMapLayer _waterTiles;
   [Export] 
   private TileMapLayer _obstacleTiles;
 
-  //public void SetTiles(List<(TileUtils.TileType, Vector2I)> tiles)
+  public Vector2 GetCenterOfTileAt(Vector2 globalPos)
+  {
+    Vector2I coords = _backgroundTiles.LocalToMap(_backgroundTiles.ToLocal(globalPos));
+    Vector2 worldPos = _backgroundTiles.ToGlobal(_backgroundTiles.MapToLocal(coords));
+
+    return worldPos;
+  }
+
+  public bool ContainsPoint(Vector2 globalPos)
+  {
+    Vector2I coords = _backgroundTiles.LocalToMap(_backgroundTiles.ToLocal(globalPos));
+    Rect2I rect = _backgroundTiles.GetUsedRect();
+
+    return rect.HasPoint(coords);
+  }
+
   public void SetTiles(TilePlacementData[] tiles)
   {
     //Clear existing tiles
