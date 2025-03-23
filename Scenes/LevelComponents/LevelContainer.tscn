@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dttlojaeq4s56" path="res://Scripts/LevelControl/LevelContainer.cs" id="1_55qk7"]
 [ext_resource type="PackedScene" uid="uid://rx2sh7x45s6t" path="res://Scenes/LevelComponents/LevelTileMap.tscn" id="2_ltnw4"]
 
-[node name="LevelContainer" type="Node" node_paths=PackedStringArray("LevelTileMap")]
+[node name="LevelContainer" type="Node" node_paths=PackedStringArray("_levelTileMap")]
 script = ExtResource("1_55qk7")
-LevelTileMap = NodePath("LevelTileMap")
+_levelTileMap = NodePath("LevelTileMap")
 
 [node name="LevelTileMap" parent="." instance=ExtResource("2_ltnw4")]

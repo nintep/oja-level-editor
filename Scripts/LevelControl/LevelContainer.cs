@@ -7,7 +7,7 @@ public partial class LevelContainer : Node
   private LevelData LevelData;
 
   [Export]
-  public LevelTilemap LevelTileMap {get; private set;}
+  private LevelTilemap _levelTileMap;
 
   public override void _Ready()
   {
@@ -26,16 +26,26 @@ public partial class LevelContainer : Node
     }
 
     LevelData = levelData;    
-    LevelTileMap.SetTiles(levelData.Tiles);
+    _levelTileMap.SetTiles(levelData.Tiles);
   }
 
   public LevelData GetLevelData()
   {
     //Refresh tiles
-    LevelData.Tiles = LevelTileMap.GetTiles();
-    LevelData.NumTiles = LevelTileMap.GetTiles().Length;
+    LevelData.Tiles = _levelTileMap.GetTiles();
+    LevelData.NumTiles = _levelTileMap.GetTiles().Length;
     return LevelData;
   }
 
-
+  public void PaintTile(Vector2I coords, TileUtils.TileType tileType, bool eraseModeActive)
+  {
+    if (eraseModeActive)
+    {
+      _levelTileMap.EraseTile(coords);
+    }
+    else
+    {
+      _levelTileMap.PaintTile(coords, tileType);
+    }
+  }
 }

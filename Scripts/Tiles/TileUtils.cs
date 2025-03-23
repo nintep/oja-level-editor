@@ -18,6 +18,11 @@ public static class TileUtils
 
   public static TileType GetTileType(TileData tileData)
   {
+    if (tileData == null)
+    {
+      return TileType.none;
+    }
+
     string tileTypeName = (string)tileData.GetCustomData("tileType");
     return _tileNames.GetValueOrDefault(tileTypeName);
   }
@@ -104,7 +109,8 @@ public static class TileUtils
     hole,
     dirtPile,
     rock,
-    flower
+    flower,
+    startTile
   }
 
   public enum TileMapLayerType

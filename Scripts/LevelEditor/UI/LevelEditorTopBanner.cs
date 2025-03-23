@@ -3,6 +3,8 @@ using System;
 
 public partial class LevelEditorTopBanner : Control
 {
+  [Signal]
+  public delegate void FileDialogStateChangedEventHandler(bool opened);
 
   [Signal]
   public delegate void SaveInitiatedEventHandler();
@@ -41,12 +43,14 @@ public partial class LevelEditorTopBanner : Control
   public void OnSaveAsButtonPressed()
   {
     _saveLevelDialog.Show();
+    EmitSignal(SignalName.FileDialogStateChanged, true);
   }
 
   public void OnSaveLevelDialogFileSelected(string path)
   {
     GD.Print("TopBanner: save file selected " + path);
     EmitSignal(SignalName.SaveAsInitiated, path);
+    EmitSignal(SignalName.FileDialogStateChanged, false);
   }
 
   public void OnLoadButtonPressed()
@@ -54,13 +58,14 @@ public partial class LevelEditorTopBanner : Control
     _loadLevelDialog.Show();
     _loadLevelDialog.CurrentFile = "";
     _loadLevelDialog.FileNameFilter = "";
-    
+    EmitSignal(SignalName.FileDialogStateChanged, true);
   }
 
   public void OnLoadLevelDialogFileSelected(string path)
   {
     GD.Print("TopBanner: load file selected " + path);
     EmitSignal(SignalName.LoadInitiated, path);
+    EmitSignal(SignalName.FileDialogStateChanged, false);
   }
 
 

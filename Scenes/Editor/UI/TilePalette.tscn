@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv8gqk6f4glny"]
+[gd_scene load_steps=19 format=3 uid="uid://bv8gqk6f4glny"]
 
 [ext_resource type="Theme" uid="uid://8k885cbwumpr" path="res://Resources/Themes/LevelEditor.tres" id="1_jjpr3"]
+[ext_resource type="Script" uid="uid://cbfhb8gray7yt" path="res://Scripts/LevelEditor/TilePalette.cs" id="2_0p7rp"]
 [ext_resource type="Texture2D" uid="uid://djsdpkn6o81ya" path="res://Textures/ground.png" id="3_muxlv"]
 [ext_resource type="Texture2D" uid="uid://rb4mfxsawbwi" path="res://Textures/tiles.png" id="4_muxlv"]
 [ext_resource type="Texture2D" uid="uid://mbrl2ot7s6td" path="res://Textures/obstacles.png" id="5_kij56"]
 [ext_resource type="Texture2D" uid="uid://dyowwtekstvtx" path="res://Textures/Flower_idle.png" id="6_087oi"]
+[ext_resource type="Script" uid="uid://bokapleg4x7bv" path="res://Scripts/LevelEditor/TileMapMouseUtil.cs" id="7_6k1c3"]
 [ext_resource type="Texture2D" uid="uid://bhkym0qp4ymbt" path="res://Textures/Badger_front.png" id="7_w126y"]
+[ext_resource type="Texture2D" uid="uid://dflg7uky0y8nb" path="res://Textures/white_border.png" id="8_0p7rp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kij56"]
 atlas = ExtResource("3_muxlv")
@@ -43,7 +46,7 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("7_w126y")
 region = Rect2(0, 0, 32, 32)
 
-[node name="TilePalette" type="Control"]
+[node name="TilePalette" type="Control" node_paths=PackedStringArray("_mouseUtility", "_itemList")]
 layout_mode = 3
 anchor_left = 0.417969
 anchor_top = 0.228125
@@ -52,6 +55,9 @@ anchor_bottom = 0.79375
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jjpr3")
+script = ExtResource("2_0p7rp")
+_mouseUtility = NodePath("TileMapMouseUtil")
+_itemList = NodePath("ItemList")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -84,3 +90,14 @@ item_5/icon = SubResource("AtlasTexture_6k1c3")
 item_6/icon = SubResource("AtlasTexture_0p7rp")
 item_7/icon = SubResource("AtlasTexture_nmsdu")
 item_8/icon = SubResource("AtlasTexture_mtade")
+
+[node name="TileMapMouseUtil" type="Node" parent="." node_paths=PackedStringArray("_highliht")]
+script = ExtResource("7_6k1c3")
+_highliht = NodePath("TileOutline")
+
+[node name="TileOutline" type="Sprite2D" parent="TileMapMouseUtil"]
+position = Vector2(410, 271)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("8_0p7rp")
+
+[connection signal="item_selected" from="ItemList" to="." method="OnItemListItemSelected"]
