@@ -1,0 +1,830 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=167 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Data/TilePlacementData.cs" id="1_0djn0"]
+[ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="2_8nui5"]
+
+[sub_resource type="Resource" id="Resource_0djn0"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="Resource_8nui5"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 1)
+
+[sub_resource type="Resource" id="Resource_mkre8"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 2)
+
+[sub_resource type="Resource" id="Resource_kjgpp"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 2)
+
+[sub_resource type="Resource" id="Resource_t8c8y"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 3)
+
+[sub_resource type="Resource" id="Resource_j637k"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 4)
+
+[sub_resource type="Resource" id="Resource_xurye"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 6)
+
+[sub_resource type="Resource" id="Resource_m84us"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 1)
+
+[sub_resource type="Resource" id="Resource_b5nsb"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 1)
+
+[sub_resource type="Resource" id="Resource_ewivu"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 2)
+
+[sub_resource type="Resource" id="Resource_q3mtf"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 2)
+
+[sub_resource type="Resource" id="Resource_6071r"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 3)
+
+[sub_resource type="Resource" id="Resource_0mxnn"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 3)
+
+[sub_resource type="Resource" id="Resource_yvuub"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 4)
+
+[sub_resource type="Resource" id="Resource_x5rm1"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 6)
+
+[sub_resource type="Resource" id="Resource_rlbc4"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 6)
+
+[sub_resource type="Resource" id="Resource_yk85y"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 6)
+
+[sub_resource type="Resource" id="Resource_35cp3"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 6)
+
+[sub_resource type="Resource" id="Resource_bvpov"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 6)
+
+[sub_resource type="Resource" id="Resource_ynlbf"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 6)
+
+[sub_resource type="Resource" id="Resource_tdi6l"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 6)
+
+[sub_resource type="Resource" id="Resource_th3m7"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 6)
+
+[sub_resource type="Resource" id="Resource_15prk"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 6)
+
+[sub_resource type="Resource" id="Resource_fv11r"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 6)
+
+[sub_resource type="Resource" id="Resource_nywtc"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 6)
+
+[sub_resource type="Resource" id="Resource_lyoga"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 6)
+
+[sub_resource type="Resource" id="Resource_ueij0"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 6)
+
+[sub_resource type="Resource" id="Resource_76cx5"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 7)
+
+[sub_resource type="Resource" id="Resource_r8eeu"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 8)
+
+[sub_resource type="Resource" id="Resource_3i7vw"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 9)
+
+[sub_resource type="Resource" id="Resource_4pg0e"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 1)
+
+[sub_resource type="Resource" id="Resource_bupks"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 2)
+
+[sub_resource type="Resource" id="Resource_611pa"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 4)
+
+[sub_resource type="Resource" id="Resource_00s66"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 5)
+
+[sub_resource type="Resource" id="Resource_ghcph"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 1)
+
+[sub_resource type="Resource" id="Resource_a4uky"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 1)
+
+[sub_resource type="Resource" id="Resource_njgq1"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 2)
+
+[sub_resource type="Resource" id="Resource_2bv7i"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 3)
+
+[sub_resource type="Resource" id="Resource_elqrh"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 1)
+
+[sub_resource type="Resource" id="Resource_bs1ms"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 2)
+
+[sub_resource type="Resource" id="Resource_j7wvl"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 3)
+
+[sub_resource type="Resource" id="Resource_76qvg"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 4)
+
+[sub_resource type="Resource" id="Resource_qep1s"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 1)
+
+[sub_resource type="Resource" id="Resource_5ukb1"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 2)
+
+[sub_resource type="Resource" id="Resource_008et"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 3)
+
+[sub_resource type="Resource" id="Resource_dexmh"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 4)
+
+[sub_resource type="Resource" id="Resource_w31tb"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 1)
+
+[sub_resource type="Resource" id="Resource_n5ka7"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 2)
+
+[sub_resource type="Resource" id="Resource_0pn30"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 3)
+
+[sub_resource type="Resource" id="Resource_oeuqq"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 4)
+
+[sub_resource type="Resource" id="Resource_gwtvr"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 3)
+
+[sub_resource type="Resource" id="Resource_dhfno"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 4)
+
+[sub_resource type="Resource" id="Resource_dtcve"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 4)
+
+[sub_resource type="Resource" id="Resource_y8jls"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 1)
+
+[sub_resource type="Resource" id="Resource_wt1ld"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 2)
+
+[sub_resource type="Resource" id="Resource_mxx1s"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 1)
+
+[sub_resource type="Resource" id="Resource_a3pg5"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 2)
+
+[sub_resource type="Resource" id="Resource_fjtar"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 3)
+
+[sub_resource type="Resource" id="Resource_37bui"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 4)
+
+[sub_resource type="Resource" id="Resource_iaqyx"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 6)
+
+[sub_resource type="Resource" id="Resource_t2rx0"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 1)
+
+[sub_resource type="Resource" id="Resource_q2lt6"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 2)
+
+[sub_resource type="Resource" id="Resource_ggok6"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 3)
+
+[sub_resource type="Resource" id="Resource_lh3ob"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 4)
+
+[sub_resource type="Resource" id="Resource_k55og"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(0, 5)
+
+[sub_resource type="Resource" id="Resource_3h010"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 0)
+
+[sub_resource type="Resource" id="Resource_j7a7l"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 2)
+
+[sub_resource type="Resource" id="Resource_kejo3"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 3)
+
+[sub_resource type="Resource" id="Resource_d2013"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 4)
+
+[sub_resource type="Resource" id="Resource_2y4t6"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 5)
+
+[sub_resource type="Resource" id="Resource_txfk3"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 7)
+
+[sub_resource type="Resource" id="Resource_ybtus"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 8)
+
+[sub_resource type="Resource" id="Resource_trko3"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(1, 9)
+
+[sub_resource type="Resource" id="Resource_bggcm"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 3)
+
+[sub_resource type="Resource" id="Resource_dcexv"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 4)
+
+[sub_resource type="Resource" id="Resource_e0q2d"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 5)
+
+[sub_resource type="Resource" id="Resource_ye451"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 7)
+
+[sub_resource type="Resource" id="Resource_aysmr"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 8)
+
+[sub_resource type="Resource" id="Resource_rtpu8"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 9)
+
+[sub_resource type="Resource" id="Resource_ja6oy"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 0)
+
+[sub_resource type="Resource" id="Resource_mmul6"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 1)
+
+[sub_resource type="Resource" id="Resource_c11xq"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 3)
+
+[sub_resource type="Resource" id="Resource_c6niw"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 4)
+
+[sub_resource type="Resource" id="Resource_5b6ky"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 5)
+
+[sub_resource type="Resource" id="Resource_8w274"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 7)
+
+[sub_resource type="Resource" id="Resource_l6tfb"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 8)
+
+[sub_resource type="Resource" id="Resource_ox05v"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(3, 9)
+
+[sub_resource type="Resource" id="Resource_hwgaa"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 0)
+
+[sub_resource type="Resource" id="Resource_t384w"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 1)
+
+[sub_resource type="Resource" id="Resource_bpc2v"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 3)
+
+[sub_resource type="Resource" id="Resource_x1trb"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 4)
+
+[sub_resource type="Resource" id="Resource_myhpg"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 5)
+
+[sub_resource type="Resource" id="Resource_kwapw"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 7)
+
+[sub_resource type="Resource" id="Resource_mjnmc"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 8)
+
+[sub_resource type="Resource" id="Resource_gnyeq"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(4, 9)
+
+[sub_resource type="Resource" id="Resource_n7bdl"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 0)
+
+[sub_resource type="Resource" id="Resource_stsio"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 7)
+
+[sub_resource type="Resource" id="Resource_5nm3o"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 8)
+
+[sub_resource type="Resource" id="Resource_gdi3e"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(5, 9)
+
+[sub_resource type="Resource" id="Resource_audtd"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 0)
+
+[sub_resource type="Resource" id="Resource_1yf2o"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 7)
+
+[sub_resource type="Resource" id="Resource_02vnm"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 8)
+
+[sub_resource type="Resource" id="Resource_wge32"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 9)
+
+[sub_resource type="Resource" id="Resource_3ld68"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 0)
+
+[sub_resource type="Resource" id="Resource_nscs2"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 7)
+
+[sub_resource type="Resource" id="Resource_nhssx"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 8)
+
+[sub_resource type="Resource" id="Resource_0qien"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 9)
+
+[sub_resource type="Resource" id="Resource_g0olm"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 0)
+
+[sub_resource type="Resource" id="Resource_3fa77"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 7)
+
+[sub_resource type="Resource" id="Resource_5pp7l"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 8)
+
+[sub_resource type="Resource" id="Resource_cvw3i"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 9)
+
+[sub_resource type="Resource" id="Resource_hfqpe"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 0)
+
+[sub_resource type="Resource" id="Resource_rume5"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 7)
+
+[sub_resource type="Resource" id="Resource_d6atn"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 8)
+
+[sub_resource type="Resource" id="Resource_efhk5"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 9)
+
+[sub_resource type="Resource" id="Resource_dy8uk"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 0)
+
+[sub_resource type="Resource" id="Resource_m8fbp"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 7)
+
+[sub_resource type="Resource" id="Resource_odt5h"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 8)
+
+[sub_resource type="Resource" id="Resource_hnsd8"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 9)
+
+[sub_resource type="Resource" id="Resource_md8jp"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 0)
+
+[sub_resource type="Resource" id="Resource_5pom3"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 7)
+
+[sub_resource type="Resource" id="Resource_wyi2u"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 8)
+
+[sub_resource type="Resource" id="Resource_6i7p0"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 0)
+
+[sub_resource type="Resource" id="Resource_dby60"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 7)
+
+[sub_resource type="Resource" id="Resource_wr5ue"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 8)
+
+[sub_resource type="Resource" id="Resource_w687o"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 0)
+
+[sub_resource type="Resource" id="Resource_v2sg5"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 7)
+
+[sub_resource type="Resource" id="Resource_brpmy"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 8)
+
+[sub_resource type="Resource" id="Resource_01f5g"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 0)
+
+[sub_resource type="Resource" id="Resource_0etjd"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 7)
+
+[sub_resource type="Resource" id="Resource_sh5ef"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 8)
+
+[sub_resource type="Resource" id="Resource_g48ws"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 9)
+
+[sub_resource type="Resource" id="Resource_10k1d"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 0)
+
+[sub_resource type="Resource" id="Resource_vmhqw"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 1)
+
+[sub_resource type="Resource" id="Resource_na8fr"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 2)
+
+[sub_resource type="Resource" id="Resource_2hr50"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 3)
+
+[sub_resource type="Resource" id="Resource_f3tny"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 4)
+
+[sub_resource type="Resource" id="Resource_reb8l"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 5)
+
+[sub_resource type="Resource" id="Resource_bmsq0"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 6)
+
+[sub_resource type="Resource" id="Resource_x4q0m"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 7)
+
+[sub_resource type="Resource" id="Resource_6qead"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 8)
+
+[sub_resource type="Resource" id="Resource_lvwqh"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(15, 9)
+
+[sub_resource type="Resource" id="Resource_el6sq"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 9)
+
+[sub_resource type="Resource" id="Resource_ku1rb"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 9)
+
+[sub_resource type="Resource" id="Resource_w4bh6"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 9)
+
+[sub_resource type="Resource" id="Resource_0ik6l"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 2)
+
+[sub_resource type="Resource" id="Resource_c3ic1"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 1)
+
+[sub_resource type="Resource" id="Resource_26spl"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(2, 0)
+
+[sub_resource type="Resource" id="Resource_m3bef"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 5)
+
+[sub_resource type="Resource" id="Resource_6e8si"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 4)
+
+[sub_resource type="Resource" id="Resource_3jngd"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 3)
+
+[sub_resource type="Resource" id="Resource_xhpsd"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(6, 2)
+
+[sub_resource type="Resource" id="Resource_mbwwf"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(7, 5)
+
+[sub_resource type="Resource" id="Resource_056sd"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(8, 5)
+
+[sub_resource type="Resource" id="Resource_8rl6x"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(9, 5)
+
+[sub_resource type="Resource" id="Resource_btlqh"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(10, 5)
+
+[sub_resource type="Resource" id="Resource_63ecc"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(11, 5)
+
+[sub_resource type="Resource" id="Resource_k8j5l"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(12, 5)
+
+[sub_resource type="Resource" id="Resource_fyjry"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(13, 5)
+
+[sub_resource type="Resource" id="Resource_li6u2"]
+script = ExtResource("1_0djn0")
+tileType = 1
+coords = Vector2i(14, 5)
+
+[sub_resource type="Resource" id="Resource_8lqa4"]
+script = ExtResource("1_0djn0")
+tileType = 4
+coords = Vector2i(1, 1)
+
+[sub_resource type="Resource" id="Resource_o52y8"]
+script = ExtResource("1_0djn0")
+tileType = 9
+coords = Vector2i(10, 2)
+
+[sub_resource type="Resource" id="Resource_60xse"]
+script = ExtResource("1_0djn0")
+tileType = 9
+coords = Vector2i(4, 5)
+
+[sub_resource type="Resource" id="Resource_kjbjm"]
+script = ExtResource("1_0djn0")
+tileType = 9
+coords = Vector2i(7, 2)
+
+[resource]
+script = ExtResource("2_8nui5")
+Name = "water_test"
+NumTiles = 164
+Tiles = [SubResource("Resource_0djn0"), SubResource("Resource_8nui5"), SubResource("Resource_mkre8"), SubResource("Resource_kjgpp"), SubResource("Resource_t8c8y"), SubResource("Resource_j637k"), SubResource("Resource_xurye"), SubResource("Resource_m84us"), SubResource("Resource_b5nsb"), SubResource("Resource_ewivu"), SubResource("Resource_q3mtf"), SubResource("Resource_6071r"), SubResource("Resource_0mxnn"), SubResource("Resource_yvuub"), SubResource("Resource_x5rm1"), SubResource("Resource_rlbc4"), SubResource("Resource_yk85y"), SubResource("Resource_35cp3"), SubResource("Resource_bvpov"), SubResource("Resource_ynlbf"), SubResource("Resource_tdi6l"), SubResource("Resource_th3m7"), SubResource("Resource_15prk"), SubResource("Resource_fv11r"), SubResource("Resource_nywtc"), SubResource("Resource_lyoga"), SubResource("Resource_ueij0"), SubResource("Resource_76cx5"), SubResource("Resource_r8eeu"), SubResource("Resource_3i7vw"), SubResource("Resource_4pg0e"), SubResource("Resource_bupks"), SubResource("Resource_611pa"), SubResource("Resource_00s66"), SubResource("Resource_ghcph"), SubResource("Resource_a4uky"), SubResource("Resource_njgq1"), SubResource("Resource_2bv7i"), SubResource("Resource_elqrh"), SubResource("Resource_bs1ms"), SubResource("Resource_j7wvl"), SubResource("Resource_76qvg"), SubResource("Resource_qep1s"), SubResource("Resource_5ukb1"), SubResource("Resource_008et"), SubResource("Resource_dexmh"), SubResource("Resource_w31tb"), SubResource("Resource_n5ka7"), SubResource("Resource_0pn30"), SubResource("Resource_oeuqq"), SubResource("Resource_gwtvr"), SubResource("Resource_dhfno"), SubResource("Resource_dtcve"), SubResource("Resource_y8jls"), SubResource("Resource_wt1ld"), SubResource("Resource_mxx1s"), SubResource("Resource_a3pg5"), SubResource("Resource_fjtar"), SubResource("Resource_37bui"), SubResource("Resource_iaqyx"), SubResource("Resource_t2rx0"), SubResource("Resource_q2lt6"), SubResource("Resource_ggok6"), SubResource("Resource_lh3ob"), SubResource("Resource_k55og"), SubResource("Resource_3h010"), SubResource("Resource_j7a7l"), SubResource("Resource_kejo3"), SubResource("Resource_d2013"), SubResource("Resource_2y4t6"), SubResource("Resource_txfk3"), SubResource("Resource_ybtus"), SubResource("Resource_trko3"), SubResource("Resource_bggcm"), SubResource("Resource_dcexv"), SubResource("Resource_e0q2d"), SubResource("Resource_ye451"), SubResource("Resource_aysmr"), SubResource("Resource_rtpu8"), SubResource("Resource_ja6oy"), SubResource("Resource_mmul6"), SubResource("Resource_c11xq"), SubResource("Resource_c6niw"), SubResource("Resource_5b6ky"), SubResource("Resource_8w274"), SubResource("Resource_l6tfb"), SubResource("Resource_ox05v"), SubResource("Resource_hwgaa"), SubResource("Resource_t384w"), SubResource("Resource_bpc2v"), SubResource("Resource_x1trb"), SubResource("Resource_myhpg"), SubResource("Resource_kwapw"), SubResource("Resource_mjnmc"), SubResource("Resource_gnyeq"), SubResource("Resource_n7bdl"), SubResource("Resource_stsio"), SubResource("Resource_5nm3o"), SubResource("Resource_gdi3e"), SubResource("Resource_audtd"), SubResource("Resource_1yf2o"), SubResource("Resource_02vnm"), SubResource("Resource_wge32"), SubResource("Resource_3ld68"), SubResource("Resource_nscs2"), SubResource("Resource_nhssx"), SubResource("Resource_0qien"), SubResource("Resource_g0olm"), SubResource("Resource_3fa77"), SubResource("Resource_5pp7l"), SubResource("Resource_cvw3i"), SubResource("Resource_hfqpe"), SubResource("Resource_rume5"), SubResource("Resource_d6atn"), SubResource("Resource_efhk5"), SubResource("Resource_dy8uk"), SubResource("Resource_m8fbp"), SubResource("Resource_odt5h"), SubResource("Resource_hnsd8"), SubResource("Resource_md8jp"), SubResource("Resource_5pom3"), SubResource("Resource_wyi2u"), SubResource("Resource_6i7p0"), SubResource("Resource_dby60"), SubResource("Resource_wr5ue"), SubResource("Resource_w687o"), SubResource("Resource_v2sg5"), SubResource("Resource_brpmy"), SubResource("Resource_01f5g"), SubResource("Resource_0etjd"), SubResource("Resource_sh5ef"), SubResource("Resource_g48ws"), SubResource("Resource_10k1d"), SubResource("Resource_vmhqw"), SubResource("Resource_na8fr"), SubResource("Resource_2hr50"), SubResource("Resource_f3tny"), SubResource("Resource_reb8l"), SubResource("Resource_bmsq0"), SubResource("Resource_x4q0m"), SubResource("Resource_6qead"), SubResource("Resource_lvwqh"), SubResource("Resource_el6sq"), SubResource("Resource_ku1rb"), SubResource("Resource_w4bh6"), SubResource("Resource_0ik6l"), SubResource("Resource_c3ic1"), SubResource("Resource_26spl"), SubResource("Resource_m3bef"), SubResource("Resource_6e8si"), SubResource("Resource_3jngd"), SubResource("Resource_xhpsd"), SubResource("Resource_mbwwf"), SubResource("Resource_056sd"), SubResource("Resource_8rl6x"), SubResource("Resource_btlqh"), SubResource("Resource_63ecc"), SubResource("Resource_k8j5l"), SubResource("Resource_fyjry"), SubResource("Resource_li6u2"), SubResource("Resource_8lqa4"), SubResource("Resource_o52y8"), SubResource("Resource_60xse"), SubResource("Resource_kjbjm")]

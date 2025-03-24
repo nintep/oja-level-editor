@@ -3,17 +3,42 @@ using System;
 
 public partial class LevelContainer : Node
 {
-  [Export]
-  private LevelData LevelData;
+  [Export] private LevelData LevelData;
 
-  [Export]
-  private LevelTilemap _levelTileMap;
+  [Export] private LevelTilemap _levelTileMap;
+
+  [Export] private bool _runAtStart = false;
+
+  private bool _isLevelRunning;
+  private static float _stepInterval = 0.8f;
+  private float _stepDelayRemaining;
 
   public override void _Ready()
   {
     if (LevelData == null)
     {
       LevelData = new LevelData();
+    }
+
+    _isLevelRunning = _runAtStart;
+    _stepDelayRemaining = _stepInterval;
+  }
+
+  public override void _Process(double delta)
+  {
+    if (!_isLevelRunning)
+    {
+      return;
+    }
+
+    if (_stepDelayRemaining > 0)
+    {
+      _stepDelayRemaining -= (float)delta;
+    }
+
+    if (_stepDelayRemaining <= 0)
+    {
+      TakeStep();
     }
   }
 
@@ -47,5 +72,23 @@ public partial class LevelContainer : Node
     {
       _levelTileMap.PaintTile(coords, tileType);
     }
+  }
+
+  public void Dig(Vector2 playerPos, Vector2 direction)
+  {
+
+  }
+
+  public void SetLevelRunning(bool isRunning)
+  {
+    GD.Print("LevelContainer: set level running " + isRunning);
+
+    _isLevelRunning = isRunning;
+  }
+
+  private void TakeStep()
+  {
+    _stepDelayRemaining = _stepInterval;
+    _levelTileMap.RefreshWater();
   }
 }

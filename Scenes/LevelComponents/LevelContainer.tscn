@@ -6,5 +6,6 @@
 [node name="LevelContainer" type="Node" node_paths=PackedStringArray("_levelTileMap")]
 script = ExtResource("1_55qk7")
 _levelTileMap = NodePath("LevelTileMap")
+_runAtStart = true
 
 [node name="LevelTileMap" parent="." instance=ExtResource("2_ltnw4")]

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class LevelTilemap : Node
 {
@@ -27,6 +28,14 @@ public partial class LevelTilemap : Node
     return coords;
   }
 
+  public bool ContainsPoint(Vector2 globalPos)
+  {
+    Vector2I coords = _backgroundTiles.LocalToMap(_backgroundTiles.ToLocal(globalPos));
+    Rect2I rect = _backgroundTiles.GetUsedRect();
+
+    return rect.HasPoint(coords);
+  }
+
   public TileUtils.TileType GetTypeOfTopTileAt(Vector2I coords)
   {
     TileData groundData = _groundTiles.GetCellTileData(coords);
@@ -45,14 +54,49 @@ public partial class LevelTilemap : Node
     return tileType;
   }
 
-  public bool ContainsPoint(Vector2 globalPos)
+  private TileUtils.TileType GetTypeOfTileAt(Vector2I coords, TileMapLayer layer)
   {
-    Vector2I coords = _backgroundTiles.LocalToMap(_backgroundTiles.ToLocal(globalPos));
-    Rect2I rect = _backgroundTiles.GetUsedRect();
+    TileData tileData = layer.GetCellTileData(coords);
 
-    return rect.HasPoint(coords);
+    if (tileData == null)
+    {
+      return TileUtils.TileType.none;
+    }
+
+    TileUtils.TileType tileType = TileUtils.GetTileType(tileData);
+    return tileType;
   }
 
+  private List<Vector2I> GetNeighborsOfTypes(Vector2I coords, List<TileUtils.TileType> tileTypes)
+  {
+    List<Vector2I> neighbors = new List<Vector2I>();
+    foreach (TileUtils.TileType type in tileTypes)
+    {
+      neighbors = neighbors.Concat(GetNeighborsOfType(coords, type)).ToList();
+    }
+
+    return neighbors;
+  }
+
+  private List<Vector2I> GetNeighborsOfType(Vector2I coords, TileUtils.TileType tileType)
+  {
+    
+    List<Vector2I> neighbors = new List<Vector2I>();
+
+    TileUtils.TileMapLayerType layerType = TileUtils.GetTargetLayerType(tileType);
+    TileMapLayer layer = GetLayer(layerType);
+
+    foreach (Vector2I neighbor in layer.GetSurroundingCells(coords))
+    {
+      if (GetTypeOfTileAt(neighbor, layer) == tileType)
+      {
+        neighbors.Add(neighbor);
+      }
+    }
+    return neighbors;
+  }
+
+  
   public void SetTiles(TilePlacementData[] tiles)
   {
     //Clear existing tiles
@@ -120,6 +164,79 @@ public partial class LevelTilemap : Node
     return tiles.ToArray();
   }
 
+  public void PaintTile(Vector2I coords, TileUtils.TileType tileType)
+  {
+    if (tileType == TileUtils.TileType.none)
+    {
+      GD.PrintErr("LevelTileMap: trying to paint tile with tiletype none");
+      return;
+    }
+    
+    SetTile(coords, tileType);
+
+    //Handle special cases - generally painted tile takes priority over existing tiles
+
+    //If painting ground tiles over water tiles, remove water tile
+    if (tileType == TileUtils.TileType.ground_grass || tileType == TileUtils.TileType.ground_stone)
+    {
+      if (_waterTiles.GetCellTileData(coords) != null)
+      {
+        _waterTiles.EraseCell(coords);
+      }
+    }
+
+    //If painting stone ground tiles, remove holes and TODO: flowers
+    if (tileType == TileUtils.TileType.ground_stone)
+    {
+      if (TileUtils.GetTileType(_obstacleTiles.GetCellTileData(coords)) == TileUtils.TileType.hole)
+      {
+        _obstacleTiles.EraseCell(coords);
+      }
+    }
+
+    //If painting spring tiles, erase rocks
+    if (tileType == TileUtils.TileType.water_spring)
+    {
+      if (TileUtils.GetTileType(_obstacleTiles.GetCellTileData(coords)) == TileUtils.TileType.rock)
+      {
+        _obstacleTiles.EraseCell(coords);
+      }
+    }
+
+    //If painting obstacle tiles other than rocks, erase water (and add grass)
+    if (TileUtils.GetTargetLayerType(tileType) == TileUtils.TileMapLayerType.obstacle && tileType != TileUtils.TileType.rock)
+    {
+      if (_waterTiles.GetCellTileData(coords) != null)
+      {
+        _waterTiles.EraseCell(coords);
+        SetTile(coords, TileUtils.TileType.ground_grass);
+      }
+    }
+
+    //If painting player start tile, remove all other player starts
+    if (TileUtils.GetTileType(_obstacleTiles.GetCellTileData(coords)) == TileUtils.TileType.startTile)
+    {
+
+    }
+
+    RepairTilesAtCoords(coords);
+  }
+
+  public void EraseTile(Vector2I coords)
+  {
+    //If contains obstacle, erase it
+    if (_obstacleTiles.GetCellTileData(coords) != null)
+    {
+      _obstacleTiles.EraseCell(coords);
+    }
+
+    //If contains spring, change it to normal water
+    if (TileUtils.GetTileType(_waterTiles.GetCellTileData(coords)) == TileUtils.TileType.water_spring)
+    {
+      SetTile(coords, TileUtils.TileType.water);
+    }
+  }
+
   private TileMapLayer GetLayer(TileUtils.TileMapLayerType layerType)
   {
     switch (layerType)
@@ -171,75 +288,81 @@ public partial class LevelTilemap : Node
     {
       SetTile(coords, TileUtils.TileType.ground_grass);
     }
+
+    //Delete all other start tiles
+    foreach (Vector2I tile in _obstacleTiles.GetUsedCells())
+    {
+      if (tile == coords) continue;
+
+      if (GetTypeOfTileAt(tile, _obstacleTiles) == TileUtils.TileType.startTile)
+      {
+        _obstacleTiles.EraseCell(tile);
+      }
+    }
   }
 
-  public void PaintTile(Vector2I coords, TileUtils.TileType tileType)
+  //////////////////////////
+
+  public void RefreshWater()
   {
-    if (tileType == TileUtils.TileType.none)
+    GD.Print("TileMap: refresh water");
+    //Collect spring tiles
+    List<Vector2I> springTiles = new List<Vector2I>();
+    foreach (Vector2I waterTile in _waterTiles.GetUsedCells())
     {
-      GD.PrintErr("LevelTileMap: trying to pain tile with tiletype none");
+      if (GetTypeOfTileAt(waterTile, _waterTiles) == TileUtils.TileType.water_spring)
+      {
+        springTiles.Add(waterTile);
+      }
+    }
+
+    if (springTiles.Count == 0) return;
+
+    //Collect connected water tiles
+    List<Vector2I> connectedWaterTiles = new List<Vector2I>();
+    foreach (Vector2I spring in springTiles)
+    {
+      AddConnectedWaterTiles(connectedWaterTiles, spring);
+    }
+
+    //Remove unconnected water tiles and add holes
+    foreach (Vector2I waterTile in _waterTiles.GetUsedCells())
+    {
+      if (!connectedWaterTiles.Contains(waterTile))
+      {
+        _waterTiles.EraseCell(waterTile);
+        SetTile(waterTile, TileUtils.TileType.hole);
+      }
+    }
+
+    //Fill holes next to water tiles
+    foreach (Vector2I waterTile in _waterTiles.GetUsedCells())
+    {
+      List<Vector2I> holes = GetNeighborsOfType(waterTile, TileUtils.TileType.hole);
+      foreach (Vector2I hole in holes)
+      {
+        //Remove hole tile
+        _obstacleTiles.EraseCell(hole);
+        //Add water tile
+        SetTile(hole, TileUtils.TileType.water);
+      }
+    }
+  }
+
+  //Recursively collect all connected water tiles
+  private void AddConnectedWaterTiles(List<Vector2I> currentList, Vector2I startingPoint)
+  {
+    if (currentList.Contains(startingPoint))
+    {
       return;
     }
-    
-    SetTile(coords, tileType);
 
-    //Handle special cases - generally painted tile takes priority over existing tiles
+    currentList.Add(startingPoint);
+    List<Vector2I> neighbors = GetNeighborsOfTypes(startingPoint, [TileUtils.TileType.water, TileUtils.TileType.water_spring]);
 
-    //If painting ground tiles over water tiles, remove water tile
-    if (tileType == TileUtils.TileType.ground_grass || tileType == TileUtils.TileType.ground_stone)
+    for (int i = 0; i < neighbors.Count; i++)
     {
-      if (_waterTiles.GetCellTileData(coords) != null)
-      {
-        _waterTiles.EraseCell(coords);
-      }
-    }
-
-    //If painting stone ground tiles, remove holes and TODO: flowers
-    if (tileType == TileUtils.TileType.ground_stone)
-    {
-      if (TileUtils.GetTileType(_obstacleTiles.GetCellTileData(coords)) == TileUtils.TileType.hole)
-      {
-        _obstacleTiles.EraseCell(coords);
-      }
-    }
-
-    //If painting spring tiles, erase rocks
-    if (tileType == TileUtils.TileType.water_spring)
-    {
-      if (TileUtils.GetTileType(_obstacleTiles.GetCellTileData(coords)) == TileUtils.TileType.rock)
-      {
-        _obstacleTiles.EraseCell(coords);
-      }
-    }
-
-    //If painting obstacle tiles other than rocks, erase water (and add grass)
-    if (TileUtils.GetTargetLayerType(tileType) == TileUtils.TileMapLayerType.obstacle && tileType != TileUtils.TileType.rock)
-    {
-      if (_waterTiles.GetCellTileData(coords) != null)
-      {
-        _waterTiles.EraseCell(coords);
-        SetTile(coords, TileUtils.TileType.ground_grass);
-      }
-    }
-
-    //If painting hole tiles
-
-    RepairTilesAtCoords(coords);
-  }
-
-  public void EraseTile(Vector2I coords)
-  {
-    //If contains obstacle, erase it
-    if (_obstacleTiles.GetCellTileData(coords) != null)
-    {
-      _obstacleTiles.EraseCell(coords);
-    }
-
-    //If contains spring, change it to normal water
-    if (TileUtils.GetTileType(_waterTiles.GetCellTileData(coords)) == TileUtils.TileType.water_spring)
-    {
-      SetTile(coords, TileUtils.TileType.water);
+      AddConnectedWaterTiles(currentList, neighbors[i]);
     }
   }
-
 }

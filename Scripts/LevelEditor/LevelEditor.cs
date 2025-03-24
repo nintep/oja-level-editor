@@ -7,11 +7,14 @@ public partial class LevelEditor : Node
   [Export] private LevelEditorTopBanner _topBanner;
   [Export] private TilePalette _tilePalette;
   [Export] private TimedMessage _timedMessage;
+  [Export] private Button _playButton;
 
   
   //Store path of most recently loaded or saved level
   private string _currentSaveName;
   private string _currentSavePath;
+
+  private bool _playingLevel;
 
   public override void _Ready()
   {
@@ -26,6 +29,8 @@ public partial class LevelEditor : Node
     _tilePalette.TilePlaced += (Vector2I coords, TileUtils.TileType tileType) => _levelContainer.PaintTile(coords, tileType, false);
     _tilePalette.TileErased += (Vector2I coords) => _levelContainer.PaintTile(coords, TileUtils.TileType.none, true);
 
+    _playingLevel = false;
+    _playButton.Pressed += OnPlayButtonPressed;
   }
 
   private void SaveLevel()
@@ -84,5 +89,14 @@ public partial class LevelEditor : Node
     _currentSavePath = filePath;
 
     _timedMessage?.ShowMessage("Level loaded");
+  }
+
+  private void OnPlayButtonPressed()
+  {
+    _playingLevel = !_playingLevel;
+    _playButton.Text = _playingLevel ? "Edit" : "Play";
+
+    _tilePalette.SetAllowPlacement(!_playingLevel);
+    _levelContainer.SetLevelRunning(_playingLevel);
   }
 }

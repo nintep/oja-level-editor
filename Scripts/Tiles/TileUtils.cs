@@ -13,7 +13,8 @@ public static class TileUtils
     { "water_spring", TileType.water_spring },
     { "hole", TileType.hole },
     { "dirt_pile", TileType.dirtPile },
-    { "rock", TileType.rock }
+    { "rock", TileType.rock },
+    { "startTile", TileType.startTile }
   };
 
   public static TileType GetTileType(TileData tileData)
@@ -69,6 +70,8 @@ public static class TileUtils
         return 7;
       case TileType.flower:
         return 2;
+      case TileType.startTile:
+        return 1;
       default:
         return -1;
     }
@@ -94,6 +97,8 @@ public static class TileUtils
         return new Vector2I(2, 1);
       case TileType.flower:
         return new Vector2I(-1, -1);
+      case TileType.startTile:
+        return new Vector2I(0, 0);
       default:
         return new Vector2I(-1, -1);
     }
