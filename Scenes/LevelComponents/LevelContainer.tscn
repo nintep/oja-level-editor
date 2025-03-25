@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://byympyx3mdwj5"]
+[gd_scene load_steps=4 format=3 uid="uid://byympyx3mdwj5"]
 
 [ext_resource type="Script" uid="uid://dttlojaeq4s56" path="res://Scripts/LevelControl/LevelContainer.cs" id="1_55qk7"]
 [ext_resource type="PackedScene" uid="uid://rx2sh7x45s6t" path="res://Scenes/LevelComponents/LevelTileMap.tscn" id="2_ltnw4"]
+[ext_resource type="PackedScene" uid="uid://db5vqduygagox" path="res://Scenes/Player/Player.tscn" id="3_i1h1b"]
 
-[node name="LevelContainer" type="Node" node_paths=PackedStringArray("_levelTileMap")]
+[node name="LevelContainer" type="Node" node_paths=PackedStringArray("_levelTileMap", "_player")]
 script = ExtResource("1_55qk7")
 _levelTileMap = NodePath("LevelTileMap")
+_player = NodePath("Player")
 _runAtStart = true
 
 [node name="LevelTileMap" parent="." instance=ExtResource("2_ltnw4")]
+
+[node name="Player" parent="." instance=ExtResource("3_i1h1b")]
+visible = false

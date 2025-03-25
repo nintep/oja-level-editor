@@ -7,9 +7,15 @@ public partial class Player : AnimatedSprite2D
   [Export]
   private TileMapManager _tileMap;
 
+
   private GridMovement _gridMovement;
 
   private bool _digInProgress = false;
+
+  public void SetTileSize(float tileSize)
+  {
+    _gridMovement._tileSize = tileSize;
+  }
 
   public override void _Ready()
   {

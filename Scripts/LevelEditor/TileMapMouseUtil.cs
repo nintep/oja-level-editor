@@ -18,6 +18,8 @@ public partial class TileMapMouseUtil : Node
   private Vector2 _latestTilePos;
   private MouseButton _latestButtonPressed;
 
+  private bool _highlightActive = false;
+
   public override void _Process(double delta)
   {
     //If tile has been changed, forget latest button press
@@ -71,6 +73,12 @@ public partial class TileMapMouseUtil : Node
 
   private void HandleMouseMovement(InputEventMouseMotion eventMouseMotion)
   {
+    if (!_highlightActive)
+    {
+      _highliht.Hide();
+      return;
+    }
+
     //GD.Print("Mouse Motion at: ", eventMouseMotion.Position);
     Vector2 mousePos = eventMouseMotion.Position;
     if (_tileMap.ContainsPoint(mousePos))
@@ -94,5 +102,10 @@ public partial class TileMapMouseUtil : Node
       _highliht.Hide();
       _tileChangedLastFrame = true;
     }
+  }
+
+  public void ShowHighlight(bool show)
+  {
+    _highlightActive = show;
   }
 }

@@ -28,12 +28,25 @@ public partial class LevelTilemap : Node
     return coords;
   }
 
+  public Vector2 GetCenterOfTile(Vector2I coords)
+  {
+    return _backgroundTiles.ToGlobal(_backgroundTiles.MapToLocal(coords));
+  }
+
   public bool ContainsPoint(Vector2 globalPos)
   {
     Vector2I coords = _backgroundTiles.LocalToMap(_backgroundTiles.ToLocal(globalPos));
     Rect2I rect = _backgroundTiles.GetUsedRect();
 
     return rect.HasPoint(coords);
+  }
+
+  public float GetTileSize()
+  {
+    Vector2 tile_1 = GetCenterOfTile(new Vector2I(0, 0));
+    Vector2 tile_2 = GetCenterOfTile(new Vector2I(0, 1));
+
+    return tile_2.Y - tile_1.Y;
   }
 
   public TileUtils.TileType GetTypeOfTopTileAt(Vector2I coords)
@@ -65,6 +78,33 @@ public partial class LevelTilemap : Node
 
     TileUtils.TileType tileType = TileUtils.GetTileType(tileData);
     return tileType;
+  }
+
+  public bool ContainsStartTile()
+  {
+    foreach (Vector2I tile in _obstacleTiles.GetUsedCells())
+    {
+      if (GetTypeOfTileAt(tile, _obstacleTiles) == TileUtils.TileType.startTile)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public Vector2 RemoveStartTile()
+  {
+    Vector2I coords = new Vector2I(0, 0);
+    foreach (Vector2I tile in _obstacleTiles.GetUsedCells())
+    {
+      if (GetTypeOfTileAt(tile, _obstacleTiles) == TileUtils.TileType.startTile)
+      {
+        _obstacleTiles.EraseCell(tile);
+        coords = tile;
+      }
+    }
+
+    return GetCenterOfTile(coords);
   }
 
   private List<Vector2I> GetNeighborsOfTypes(Vector2I coords, List<TileUtils.TileType> tileTypes)
@@ -290,22 +330,24 @@ public partial class LevelTilemap : Node
     }
 
     //Delete all other start tiles
-    foreach (Vector2I tile in _obstacleTiles.GetUsedCells())
+    if (obstacleTileType == TileUtils.TileType.startTile)
     {
-      if (tile == coords) continue;
-
-      if (GetTypeOfTileAt(tile, _obstacleTiles) == TileUtils.TileType.startTile)
+      foreach (Vector2I tile in _obstacleTiles.GetUsedCells())
       {
-        _obstacleTiles.EraseCell(tile);
+        if (tile == coords) continue;
+
+        if (GetTypeOfTileAt(tile, _obstacleTiles) == TileUtils.TileType.startTile)
+        {
+          _obstacleTiles.EraseCell(tile);
+        }
       }
-    }
+    }    
   }
 
   //////////////////////////
 
   public void RefreshWater()
   {
-    GD.Print("TileMap: refresh water");
     //Collect spring tiles
     List<Vector2I> springTiles = new List<Vector2I>();
     foreach (Vector2I waterTile in _waterTiles.GetUsedCells())

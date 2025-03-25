@@ -37,6 +37,8 @@ public partial class TilePalette : Control
   {
     _mouseUtility.TileClicked += HandleMouseClick;
     _mouseUtility.TileCopied += SetCurrentTileType;
+
+    _mouseUtility.ShowHighlight(true);
   }
 
   public override void _Process(double delta)
@@ -58,6 +60,8 @@ public partial class TilePalette : Control
     {
       _placementDelayRemaining = 0.2f;
     }
+
+    _mouseUtility.ShowHighlight(allow);
   }
 
   public void SetCurrentTileType(TileUtils.TileType tileType)

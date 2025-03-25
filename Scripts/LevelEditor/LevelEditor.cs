@@ -97,6 +97,15 @@ public partial class LevelEditor : Node
     _playButton.Text = _playingLevel ? "Edit" : "Play";
 
     _tilePalette.SetAllowPlacement(!_playingLevel);
-    _levelContainer.SetLevelRunning(_playingLevel);
+    
+    if (_playingLevel)
+    {
+      _levelContainer.BeginLevel();
+    }
+    else
+    {
+      _levelContainer.SetLevelPaused(true);
+      _levelContainer.ResetLevel();      
+    }
   }
 }

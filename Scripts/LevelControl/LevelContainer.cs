@@ -7,6 +7,8 @@ public partial class LevelContainer : Node
 
   [Export] private LevelTilemap _levelTileMap;
 
+  [Export] private Player _player;
+
   [Export] private bool _runAtStart = false;
 
   private bool _isLevelRunning;
@@ -20,8 +22,14 @@ public partial class LevelContainer : Node
       LevelData = new LevelData();
     }
 
-    _isLevelRunning = _runAtStart;
+    _isLevelRunning = false;
     _stepDelayRemaining = _stepInterval;
+    _player.Hide();
+
+    if (_runAtStart)
+    {
+      BeginLevel();
+    }
   }
 
   public override void _Process(double delta)
@@ -52,6 +60,7 @@ public partial class LevelContainer : Node
 
     LevelData = levelData;    
     _levelTileMap.SetTiles(levelData.Tiles);
+    _player.Hide();
   }
 
   public LevelData GetLevelData()
@@ -60,6 +69,39 @@ public partial class LevelContainer : Node
     LevelData.Tiles = _levelTileMap.GetTiles();
     LevelData.NumTiles = _levelTileMap.GetTiles().Length;
     return LevelData;
+  }
+
+  public void BeginLevel()
+  {
+    //Refresh tile state before running level
+    LevelData.Tiles = _levelTileMap.GetTiles();
+    LevelData.NumTiles = _levelTileMap.GetTiles().Length;
+
+    if (_levelTileMap.ContainsStartTile())
+    {
+      GD.Print("Tile size: " + _levelTileMap.GetTileSize());
+      Vector2 playerStartPos = _levelTileMap.RemoveStartTile();
+
+      GD.Print("Setting player position to " + playerStartPos);
+      _player.GlobalPosition = playerStartPos;
+      _player.SetTileSize(_levelTileMap.GetTileSize());
+      _player.Show();
+    }
+
+    SetLevelPaused(false);
+  }
+
+  public void ResetLevel()
+  {
+    _levelTileMap.SetTiles(LevelData.Tiles);
+    _player.Hide();
+  }
+
+  public void SetLevelPaused(bool paused)
+  {
+    GD.Print("LevelContainer: set level running " + !paused);
+
+    _isLevelRunning = !paused;
   }
 
   public void PaintTile(Vector2I coords, TileUtils.TileType tileType, bool eraseModeActive)
@@ -77,13 +119,6 @@ public partial class LevelContainer : Node
   public void Dig(Vector2 playerPos, Vector2 direction)
   {
 
-  }
-
-  public void SetLevelRunning(bool isRunning)
-  {
-    GD.Print("LevelContainer: set level running " + isRunning);
-
-    _isLevelRunning = isRunning;
   }
 
   private void TakeStep()

@@ -9,7 +9,7 @@ public partial class GridMovement : Node2D
   [Export]
   private float _moveDelay = 0.2f;
 
-  private const int _tileSize = 32;
+  public float _tileSize = 32;
   private float _moveDelayRemaining = 0.0f;
   private RayCast2D _raycast;
 
