@@ -4,9 +4,8 @@ using System;
 public partial class Player : AnimatedSprite2D
 {
 
-  [Export]
-  private TileMapManager _tileMap;
-
+  [Signal]
+  public delegate void PlayerDiggingEventHandler(Vector2 playerPosition, Vector2I facingDirection);
 
   private GridMovement _gridMovement;
 
@@ -39,10 +38,7 @@ public partial class Player : AnimatedSprite2D
       if (dig)
       {
         _digInProgress = true;
-        if (_tileMap != null)
-        {
-          _tileMap.Dig(GlobalPosition, _gridMovement.FacingDirection);
-        }
+        EmitSignal(SignalName.PlayerDigging, GlobalPosition, _gridMovement.FacingDirection);
       }
 
       if (!_digInProgress)

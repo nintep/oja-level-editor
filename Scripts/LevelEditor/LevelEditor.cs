@@ -46,6 +46,11 @@ public partial class LevelEditor : Node
 
   private void SaveLevelAs(string savePath)
   {
+    if (_playingLevel)
+    {
+      OnPlayButtonPressed();
+    }
+
     GD.Print("LevelEditor: Save level to path " + savePath);
 
     if (_levelContainer == null)
@@ -70,6 +75,11 @@ public partial class LevelEditor : Node
 
   private void LoadLevel(string filePath)
   {
+    if (_playingLevel)
+    {
+      OnPlayButtonPressed();
+    }
+    
     if (_levelContainer == null)
     {
       GD.PrintErr("LevelEditor: levelcontainer missing");
@@ -107,5 +117,7 @@ public partial class LevelEditor : Node
       _levelContainer.SetLevelPaused(true);
       _levelContainer.ResetLevel();      
     }
+
+    _playButton.ReleaseFocus();
   }
 }

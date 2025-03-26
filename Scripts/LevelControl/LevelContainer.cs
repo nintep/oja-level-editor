@@ -24,6 +24,8 @@ public partial class LevelContainer : Node
 
     _isLevelRunning = false;
     _stepDelayRemaining = _stepInterval;
+
+    _player.PlayerDigging += _levelTileMap.Dig;
     _player.Hide();
 
     if (_runAtStart)
@@ -114,11 +116,6 @@ public partial class LevelContainer : Node
     {
       _levelTileMap.PaintTile(coords, tileType);
     }
-  }
-
-  public void Dig(Vector2 playerPos, Vector2 direction)
-  {
-
   }
 
   private void TakeStep()

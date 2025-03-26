@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public static class TileUtils
 {
-
   private static readonly Dictionary<string, TileType> _tileNames = new Dictionary<string, TileType>
   {
     { "ground_grass", TileType.ground_grass },
@@ -48,6 +47,24 @@ public static class TileUtils
   public static (int, Vector2I) GetTileAtlasInfo(TileType tileType)
   {
     return (GetTileSetSourceId(tileType), GetTileAtlasCoords(tileType));
+  }
+
+  public static bool CanReceiveDirt(TileType tileType)
+  {
+    if (tileType == TileType.ground_grass || tileType == TileType.ground_stone)
+    {
+      return true;
+    }
+    if (tileType == TileType.hole || tileType == TileType.water)
+    {
+      return true;
+    }
+    return false;
+  }
+
+  public static bool CanBeDug(TileType tileType)
+  {
+    return tileType == TileType.ground_grass || tileType == TileType.dirtPile;
   }
 
   private static int GetTileSetSourceId(TileType tileType)

@@ -136,7 +136,6 @@ public partial class LevelTilemap : Node
     return neighbors;
   }
 
-  
   public void SetTiles(TilePlacementData[] tiles)
   {
     //Clear existing tiles
@@ -407,4 +406,67 @@ public partial class LevelTilemap : Node
       AddConnectedWaterTiles(currentList, neighbors[i]);
     }
   }
+
+  public void Dig(Vector2 playercoords, Vector2I direction)
+  {
+    //Check if diggin is allowed
+    Vector2I playerCoords = _backgroundTiles.LocalToMap(_backgroundTiles.ToLocal(playercoords));
+
+    TileSet.CellNeighbor targetCell;
+    TileSet.CellNeighbor behindCell;
+
+    if (direction == Vector2.Up) {targetCell = TileSet.CellNeighbor.TopSide; behindCell = TileSet.CellNeighbor.BottomSide;}
+    else if (direction == Vector2.Right) {targetCell = TileSet.CellNeighbor.RightSide; behindCell = TileSet.CellNeighbor.LeftSide;}
+    else if (direction == Vector2.Left) {targetCell = TileSet.CellNeighbor.LeftSide; behindCell = TileSet.CellNeighbor.RightSide;}
+    else {targetCell = TileSet.CellNeighbor.BottomSide; behindCell = TileSet.CellNeighbor.TopSide;}
+
+    Vector2I targetCoords = _backgroundTiles.GetNeighborCell(playerCoords, targetCell);
+    Vector2I behindCoords = _backgroundTiles.GetNeighborCell(playerCoords, behindCell);
+
+    TileUtils.TileType targetTile = GetTypeOfTopTileAt(targetCoords);
+    TileUtils.TileType behindTile = GetTypeOfTopTileAt(behindCoords);
+
+    if (TileUtils.CanReceiveDirt(behindTile) && TileUtils.CanBeDug(targetTile))
+    {
+      RemoveDirt(targetCoords);
+      AddDirt(behindCoords);
+    }
+  }
+
+  private void RemoveDirt(Vector2I coords)
+  {
+    TileUtils.TileType currentTile = GetTypeOfTopTileAt(coords);
+
+    if (currentTile == TileUtils.TileType.ground_grass)
+    {
+      //Add hole tile
+      SetTile(coords, TileUtils.TileType.hole);
+    }
+    else if (currentTile == TileUtils.TileType.dirtPile)
+    {
+      //Remove dirt pile
+      _obstacleTiles.EraseCell(coords);
+    }
+  }
+
+  private void AddDirt(Vector2I coords)
+  {
+    TileUtils.TileType currentTile = GetTypeOfTopTileAt(coords);
+
+    if (currentTile == TileUtils.TileType.hole)
+      {
+        //Remove hole tile
+        _obstacleTiles.EraseCell(coords);
+      }
+      else if (currentTile == TileUtils.TileType.water)
+      {
+        //Remove water tile
+        _waterTiles.EraseCell(coords);
+      }
+      else
+      {
+        //Add dirt pile
+        SetTile(coords, TileUtils.TileType.dirtPile);
+      }
+  }  
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://bonohycvvra5w"]
 
-[ext_resource type="Script" uid="uid://bic0cr6u1mmmm" path="res://Scripts/TileMapManager.cs" id="1_f6fy2"]
+[ext_resource type="Script" uid="uid://bic0cr6u1mmmm" path="res://Scripts/Archive/TileMapManager.cs" id="1_f6fy2"]
 [ext_resource type="Texture2D" uid="uid://rb4mfxsawbwi" path="res://Textures/tiles.png" id="2_r8xb4"]
 [ext_resource type="PackedScene" uid="uid://qhyka33q45a5" path="res://Scenes/LevelComponents/Flower.tscn" id="4_i8yab"]
 [ext_resource type="Texture2D" uid="uid://djsdpkn6o81ya" path="res://Textures/ground.png" id="4_v3dip"]

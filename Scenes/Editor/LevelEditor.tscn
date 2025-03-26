@@ -32,6 +32,9 @@ _runAtStart = false
 position = Vector2(75, 43)
 scale = Vector2(0.84, 0.84)
 
+[node name="Player" parent="LevelContainer" index="1"]
+scale = Vector2(0.84, 0.84)
+
 [node name="TopBanner" type="Control" parent="." node_paths=PackedStringArray("_LevelNameField", "_loadLevelDialog", "_saveLevelDialog")]
 layout_mode = 3
 anchors_preset = 10
