@@ -3,8 +3,6 @@ using System;
 
 public partial class Flower : AnimatedSprite2D
 {
-  private TileMapManager _tileMap;
-
   public bool IsAlive {get; private set;}
 
   //Animation names
@@ -17,18 +15,16 @@ public partial class Flower : AnimatedSprite2D
   public override void _Ready()
   {
     //Find TileMap class in parent
-    Node parentNode = FindParent("TileMapManager");
-    if (parentNode == null || parentNode.GetType() != typeof(TileMapManager))
+    Node parentNode = FindParent("LevelTileMap");
+    if (parentNode == null || parentNode.GetType() != typeof(LevelTilemap))
     {
-      GD.PrintErr("Flower: Tilemap not found");
+      GD.PrintErr("Flower: Level container not found");
       return;
     }
 
     IsAlive = false;
-    Play(_animationIdleDead);
-
-    _tileMap = (TileMapManager)parentNode;
-    _tileMap.OnFlowerInstantiated(GlobalPosition, this);
+    LevelTilemap tileMap = (LevelTilemap)parentNode;
+    tileMap.OnFlowerInstantiated(GlobalPosition, this);
   }
 
   public void SetAlive(bool alive)

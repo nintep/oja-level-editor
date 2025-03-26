@@ -16,6 +16,8 @@ public static class TileUtils
     { "startTile", TileType.startTile }
   };
 
+  public static int FlowerSourceID => GetTileSetSourceId(TileType.flower);
+
   public static TileType GetTileType(TileData tileData)
   {
     if (tileData == null)
@@ -25,6 +27,24 @@ public static class TileUtils
 
     string tileTypeName = (string)tileData.GetCustomData("tileType");
     return _tileNames.GetValueOrDefault(tileTypeName);
+  }
+
+  public static bool CanReceiveDirt(TileType tileType)
+  {
+    if (tileType == TileType.ground_grass || tileType == TileType.ground_stone)
+    {
+      return true;
+    }
+    if (tileType == TileType.hole || tileType == TileType.water)
+    {
+      return true;
+    }
+    return false;
+  }
+
+  public static bool CanBeDug(TileType tileType)
+  {
+    return tileType == TileType.ground_grass || tileType == TileType.dirtPile;
   }
 
   public static TileMapLayerType GetTargetLayerType(TileType tileType)
@@ -44,27 +64,9 @@ public static class TileUtils
     }
   }
 
-  public static (int, Vector2I) GetTileAtlasInfo(TileType tileType)
+  public static (int, Vector2I, int) GetTileAtlasInfo(TileType tileType)
   {
-    return (GetTileSetSourceId(tileType), GetTileAtlasCoords(tileType));
-  }
-
-  public static bool CanReceiveDirt(TileType tileType)
-  {
-    if (tileType == TileType.ground_grass || tileType == TileType.ground_stone)
-    {
-      return true;
-    }
-    if (tileType == TileType.hole || tileType == TileType.water)
-    {
-      return true;
-    }
-    return false;
-  }
-
-  public static bool CanBeDug(TileType tileType)
-  {
-    return tileType == TileType.ground_grass || tileType == TileType.dirtPile;
+    return (GetTileSetSourceId(tileType), GetTileAtlasCoords(tileType), GetTileAlternativeTile(tileType));
   }
 
   private static int GetTileSetSourceId(TileType tileType)
@@ -113,11 +115,22 @@ public static class TileUtils
       case TileType.rock:
         return new Vector2I(2, 1);
       case TileType.flower:
-        return new Vector2I(-1, -1);
+        return new Vector2I(0, 0);
       case TileType.startTile:
         return new Vector2I(0, 0);
       default:
         return new Vector2I(-1, -1);
+    }
+  }
+
+  private static int GetTileAlternativeTile(TileType tileType)
+  {
+    switch (tileType)
+    {
+      case TileType.flower:
+        return 1;
+      default:
+        return 0;
     }
   }
 
