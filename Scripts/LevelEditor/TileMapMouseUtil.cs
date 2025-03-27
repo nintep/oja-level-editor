@@ -18,7 +18,8 @@ public partial class TileMapMouseUtil : Node
   private Vector2 _latestTilePos;
   private MouseButton _latestButtonPressed;
 
-  private bool _highlightActive = false;
+  private bool _drawModeActive = false;
+  private bool _clickInitiatedWhenActive = false;
 
   public override void _Process(double delta)
   {
@@ -26,6 +27,12 @@ public partial class TileMapMouseUtil : Node
     if (_tileChangedLastFrame)
     {
       _latestButtonPressed = MouseButton.None;
+    }
+
+    //If mouse press was made when drawing was inactive, return
+    if (!_clickInitiatedWhenActive)
+    {
+      return;
     }
 
     //Get highest priority mouse button
@@ -65,15 +72,27 @@ public partial class TileMapMouseUtil : Node
 
   public override void _Input(InputEvent @event)
   {
-      if (@event is InputEventMouseMotion eventMouseMotion)
-      {
-        HandleMouseMovement(eventMouseMotion);
-      }
+    if (@event is InputEventMouseButton eventMouseButton)
+    {
+      HandleMouseButton(eventMouseButton);
+    }
+    if (@event is InputEventMouseMotion eventMouseMotion)
+    {
+      HandleMouseMovement(eventMouseMotion);
+    }
+  }
+
+  private void HandleMouseButton(InputEventMouseButton eventMouseButton)
+  {
+    if (eventMouseButton.Pressed)
+    {
+      _clickInitiatedWhenActive = _drawModeActive;
+    }
   }
 
   private void HandleMouseMovement(InputEventMouseMotion eventMouseMotion)
   {
-    if (!_highlightActive)
+    if (!_drawModeActive)
     {
       _highliht.Hide();
       return;
@@ -104,8 +123,8 @@ public partial class TileMapMouseUtil : Node
     }
   }
 
-  public void ShowHighlight(bool show)
+  public void SetDrawModeActive(bool active)
   {
-    _highlightActive = show;
+    _drawModeActive = active;
   }
 }

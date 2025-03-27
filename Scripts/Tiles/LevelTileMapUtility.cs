@@ -154,7 +154,7 @@ public class LevelTilemapUtility
     return neighbors;
   }
 
-  public List<Vector2I> GetNeighborsOfTypes(Vector2I coords, List<TileUtils.TileType> tileTypes)
+  public List<Vector2I> GetNeighborsOfTypes(Vector2I coords, TileUtils.TileType[] tileTypes)
   {
     List<Vector2I> neighbors = new List<Vector2I>();
     foreach (TileUtils.TileType type in tileTypes)

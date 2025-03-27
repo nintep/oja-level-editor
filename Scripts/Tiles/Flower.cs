@@ -4,6 +4,8 @@ using System;
 public partial class Flower : AnimatedSprite2D
 {
   public bool IsAlive {get; private set;}
+  
+  private bool _isAnimationPaused;
 
   //Animation names
   private const string _animationIdleAlive = "idle_alive";
@@ -22,17 +24,36 @@ public partial class Flower : AnimatedSprite2D
       return;
     }
 
-    IsAlive = false;
+    IsAlive = true;
+    SetPaused(true, true);
+
     LevelTilemap tileMap = (LevelTilemap)parentNode;
     tileMap.OnFlowerInstantiated(GlobalPosition, this);
   }
 
+  public void SetPaused(bool paused, bool resetAnimation)
+  {
+    if (_isAnimationPaused == paused) return;
+    _isAnimationPaused = paused;
+
+    if (resetAnimation)
+    {
+      SetFrameAndProgress(0, 0);
+    }
+
+    if (_isAnimationPaused)
+    {
+      Pause();
+    }
+    else
+    {
+      Play();
+    }
+  }
+
   public void SetAlive(bool alive)
   {
-    if (IsAlive == alive)
-    {
-      return;
-    }
+    if (IsAlive == alive) return;
 
     if (alive)
     {

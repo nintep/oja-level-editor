@@ -38,7 +38,7 @@ public partial class TilePalette : Control
     _mouseUtility.TileClicked += HandleMouseClick;
     _mouseUtility.TileCopied += SetCurrentTileType;
 
-    _mouseUtility.ShowHighlight(true);
+    _mouseUtility.SetDrawModeActive(true);
   }
 
   public override void _Process(double delta)
@@ -61,7 +61,7 @@ public partial class TilePalette : Control
       _placementDelayRemaining = 0.2f;
     }
 
-    _mouseUtility.ShowHighlight(allow);
+    _mouseUtility.SetDrawModeActive(allow);
   }
 
   public void SetCurrentTileType(TileUtils.TileType tileType)

@@ -1,15 +1,25 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="LevelData" load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Data/TilePlacementData.cs" id="1_8as1n"]
 [ext_resource type="Script" path="res://Scripts/Data/LevelData.cs" id="2_t68hp"]
 
-[sub_resource type="Resource" id="Resource_8wfgu"]
+[sub_resource type="Resource" id="Resource_8as1n"]
 script = ExtResource("1_8as1n")
 tileType = 9
 coords = Vector2i(7, 4)
 
+[sub_resource type="Resource" id="Resource_t68hp"]
+script = ExtResource("1_8as1n")
+tileType = 0
+coords = Vector2i(3, 2)
+
+[sub_resource type="Resource" id="Resource_8wfgu"]
+script = ExtResource("1_8as1n")
+tileType = 8
+coords = Vector2i(3, 2)
+
 [resource]
 script = ExtResource("2_t68hp")
 Name = "Void"
-NumTiles = 1
-Tiles = [SubResource("Resource_8wfgu")]
+NumTiles = 3
+Tiles = [SubResource("Resource_8as1n"), SubResource("Resource_t68hp"), SubResource("Resource_8wfgu")]

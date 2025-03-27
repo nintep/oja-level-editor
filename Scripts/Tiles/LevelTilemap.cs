@@ -44,6 +44,15 @@ public partial class LevelTilemap : Node
     GD.Print("Flower added " + coords);
   }
 
+  public void PauseAnimations(bool paused, bool resetAnimations)
+  {
+    //pause flowers
+    foreach (Flower flower in _flowers.Values)
+    {
+      flower.SetPaused(paused, resetAnimations);
+    }
+  }
+
   public Vector2 RemoveStartTile()
   {
     Vector2I coords = new Vector2I(0, 0);
@@ -121,7 +130,10 @@ public partial class LevelTilemap : Node
     {
       TileData tileData = _obstacleTiles.GetCellTileData(coords);
       TileUtils.TileType tileType = TileUtils.GetTileType(tileData);
-      tiles.Add(new TilePlacementData(tileType, coords));
+      if (tileType != TileUtils.TileType.none)
+      {
+        tiles.Add(new TilePlacementData(tileType, coords));
+      }
     }
 
     //Add flower tiles
@@ -182,13 +194,10 @@ public partial class LevelTilemap : Node
       }
     }
 
-    //If painting flowers on stone, remove stone
+    //If painting flowers, add grass underneath
     if (tileType == TileUtils.TileType.flower)
     {
-      if (_util.GetTypeOfTileAt(coords, _groundTiles) == TileUtils.TileType.ground_stone)
-      {
-        SetTile(coords, TileUtils.TileType.ground_grass);
-      }
+      SetTile(coords, TileUtils.TileType.ground_grass);
     }
 
     RepairTilesAtCoords(coords);
@@ -232,7 +241,6 @@ public partial class LevelTilemap : Node
 
   private void RepairTilesAtCoords(Vector2I coords)
   {
-    TileUtils.TileType groundTileType = _util.GetTypeOfTileAt(coords, _groundTiles);
     TileUtils.TileType waterTileType = _util.GetTypeOfTileAt(coords, _waterTiles);
     TileUtils.TileType obstacleTileType = _util.GetTypeOfTileAt(coords, _obstacleTiles);
 
@@ -276,6 +284,20 @@ public partial class LevelTilemap : Node
   }
 
   //////////////////////////
+  
+
+  public void RefreshFlowers()
+  {
+    foreach (int id in _flowers.Keys)
+    {
+      Flower flower = _flowers[id];
+      Vector2I flowerCoords = _flowerCoords[id];
+      int waterCount = _util.GetNeighborsOfTypes(flowerCoords, [TileUtils.TileType.water, TileUtils.TileType.water_spring]).Count;
+
+      flower.SetAlive(waterCount != 0);
+    }
+  } 
+
 
   public void RefreshWater()
   {

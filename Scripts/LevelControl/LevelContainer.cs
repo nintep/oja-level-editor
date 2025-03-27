@@ -69,7 +69,7 @@ public partial class LevelContainer : Node
   {
     //Refresh tiles
     LevelData.Tiles = _levelTileMap.GetTiles();
-    LevelData.NumTiles = _levelTileMap.GetTiles().Length;
+    LevelData.NumTiles = LevelData.Tiles.Length;
     return LevelData;
   }
 
@@ -77,7 +77,7 @@ public partial class LevelContainer : Node
   {
     //Refresh tile state before running level
     LevelData.Tiles = _levelTileMap.GetTiles();
-    LevelData.NumTiles = _levelTileMap.GetTiles().Length;
+    LevelData.NumTiles = LevelData.Tiles.Length;
 
     if (_levelTileMap.ContainsStartTile())
     {
@@ -104,6 +104,7 @@ public partial class LevelContainer : Node
     GD.Print("LevelContainer: set level running " + !paused);
 
     _isLevelRunning = !paused;
+    _levelTileMap.PauseAnimations(paused, true);
   }
 
   public void PaintTile(Vector2I coords, TileUtils.TileType tileType, bool eraseModeActive)
@@ -122,5 +123,6 @@ public partial class LevelContainer : Node
   {
     _stepDelayRemaining = _stepInterval;
     _levelTileMap.RefreshWater();
+    _levelTileMap.RefreshFlowers();
   }
 }
